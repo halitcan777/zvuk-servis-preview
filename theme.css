@@ -26,8 +26,8 @@ html #voprosy{background:var(--paper)}
 
 /* тёмная концовка — чёрная, без синевы; подвал ступенькой светлее контактов */
 html #kontakty{background:#0b0c0e;--night:#0b0c0e;--night-line:#2a2b2f}
-html .foot{background:#1c1d21;border-top-color:#313236;
-           --night:#1c1d21;--night-line:#313236;
+html .foot{background:#24252a;border-top-color:#3a3b40;
+           --night:#24252a;--night-line:#3a3b40;
            --n-ink:#ffffff;--n-ink-2:#c3c3c5;--n-ink-3:#9a9b9e}
 
 /* на сером блоке линии должны читаться — тон темнее самого блока */
