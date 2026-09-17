@@ -1,0 +1,37 @@
+/* ═════════════ Звук Сервис: вторая палитра владельца, монохром ═════════════
+   У Сервиса Рядом — «серебром по синему» (#111827 + #E7E5E0).
+   Здесь — второй набор: #FFFFFF / #D3D1CF / чёрный. Никакой синевы: так два сайта
+   одной мастерской различаются палитрой целиком, а не оттенком одной и той же.
+
+   Чередование: белый герой → серый «Что ремонтируем» → белые цены →
+   серый «Как работаем» → белые вопросы → чёрная концовка.
+   Файл грузится между site.css и layout.css, поэтому спорные правила берут префикс html. */
+
+:root{
+  --bg:#c4c3c1;
+  --paper:#ffffff;   /* светлый блок */
+  --white:#d3d1cf;   /* серый блок чередования, прямо из палитры */
+  --ink:#101114; --ink-2:#3e4044; --ink-3:#4c4e53;
+  --line:#c6c4c2; --line-2:#93918f;
+  --media:#e2e1df;
+  --accent:var(--ink); --accent-hover:#2a2c31;
+  --night:#0b0c0e; --night-2:#141518; --night-3:#1d1e22; --night-line:#2a2b2f;
+  --n-ink:#ffffff; --n-ink-2:#b4b4b6; --n-ink-3:#8e9093;
+}
+html{background:var(--bg)}
+
+/* чередование: «что ремонтируем» и «как работаем» серые, цены и вопросы белые */
+html #kak-rabotaem{background:var(--white)}
+html #voprosy{background:var(--paper)}
+
+/* тёмная концовка — чёрная, без синевы; подвал ступенькой светлее контактов */
+html #kontakty{background:#0b0c0e;--night:#0b0c0e;--night-line:#2a2b2f}
+html .foot{background:#1c1d21;border-top-color:#313236;
+           --night:#1c1d21;--night-line:#313236;
+           --n-ink:#ffffff;--n-ink-2:#c3c3c5;--n-ink-3:#9a9b9e}
+
+/* на сером блоке линии должны читаться — тон темнее самого блока */
+html #chto-chinim{--line:#bcbab8}
+html #chto-chinim .acc__item{border-color:#bcbab8}
+
+@media(max-width:760px){html .callbar{background:rgba(255,255,255,.96)}}
