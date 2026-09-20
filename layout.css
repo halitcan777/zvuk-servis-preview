@@ -85,6 +85,14 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .sect--white{background:var(--white)}
 .sect--night{border-top:0}
 .sect__head{display:block;margin-bottom:32px;row-gap:0}
+/* Шапка с пояснением справа: подводка и кнопка стоят на одной линии с заголовком,
+   поэтому под списком не остаётся пустой колонки. */
+.sect__head--split{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end}
+.sect__head--split .sect__index{grid-column:1/-1}
+.sect__head--split .sect__title{grid-column:1/span 6}
+.sect__note{grid-column:8/-1;align-self:end;padding-bottom:4px}
+.sect__note p{font-size:15px;line-height:1.55;color:var(--ink-2);max-width:34ch}
+.sect__note .btn{margin-top:16px}
 .sect__index{display:flex;gap:8px;margin-bottom:12px;padding:0;font-size:12px}
 .sect__title{padding:0;border:0}
 .sect__title h2{font-size:clamp(30px,2.8vw,42px);line-height:1.12;letter-spacing:-.03em;max-width:22ch}
@@ -116,13 +124,11 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 #ceny{background:var(--paper);color:var(--ink)}
 .prices{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:0;align-items:start}
 .prices__stats{display:none}
-.prices__table,#ceny .prices__table{grid-column:1/span 8;padding:0;border-radius:0;background:transparent}
+.prices__table,#ceny .prices__table{grid-column:1/-1;padding:0;border-radius:0;background:transparent}
 .ptable th{padding:0 0 10px}
 .ptable td,#ceny .ptable td{padding-block:13px;font-size:15px}
 .ptable__note{display:none}
-.prices__aside{grid-column:10/-1;align-self:start;padding-top:24px}
-.prices__aside p{font-size:15px;line-height:1.55;color:var(--ink-2);max-width:30ch}
-.prices__aside .btn{margin-top:20px}
+
 
 /* ─────────── 03 · как проходит ремонт: три шага на линейках ─────────── */
 .steps,#ceny .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0}
@@ -138,6 +144,10 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .faq__side .sect__index{margin-bottom:12px}
 .faq__side h2{font-size:clamp(30px,2.8vw,42px);line-height:1.12;letter-spacing:-.03em}
 .faq__list{grid-column:6/-1;border-top:1px solid var(--ink)}
+.faq__cta{margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.faq__cta p{font-size:15px;line-height:1.55;color:var(--ink-2);max-width:32ch}
+.faq__tel{display:inline-block;margin-top:16px;font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.faq__hours{margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
 .faq__list summary{padding-block:24px;font-size:17.5px}
 .faq__list details p{font-size:15px;padding-bottom:24px}
 
@@ -152,7 +162,9 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .contacts__list{margin-top:20px;max-width:520px}
 .contacts__list>div{padding-block:12px}
 .contacts .hero__cta{margin-top:20px}
-.contacts__map{display:none}
+.contacts__map{display:block;height:260px;margin-top:24px;border:1px solid var(--night-line);
+               border-radius:var(--r);overflow:hidden;background:var(--night-2)}
+.contacts__map iframe{display:block;width:100%;height:100%;border:0}
 .channels,.contact-guide{grid-column:8/-1;align-self:start;border:0;border-radius:0}
 .channels__h{margin-bottom:12px;font-family:var(--mono);font-size:12px;color:var(--n-ink-3)}
 .channels__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
@@ -186,8 +198,8 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .foot__logo{width:auto;height:36px;display:block}
 .foot__brand span{font-size:19px;font-weight:600;letter-spacing:-.015em;color:var(--n-ink)}
 .foot__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:32px;padding-bottom:32px;border-bottom:1px solid var(--night-line)}
-.foot__col:nth-child(1){grid-column:1/span 5}
-.foot__col:nth-child(2){grid-column:7/span 2}
+.foot__col:nth-child(1){grid-column:1/span 4}
+.foot__col:nth-child(2){grid-column:6/span 3}
 .foot__col:nth-child(3){grid-column:10/-1}
 .foot__col b{font-size:18px;line-height:1.4;letter-spacing:-.015em}
 .foot__col p,.foot__col a{font-size:14px}
@@ -217,6 +229,7 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .acc__item.is-open .acc__title span{color:inherit;opacity:.72}
 .acc__term{font-size:14px;color:var(--ink-2);white-space:nowrap;transition:color .2s ease}
 .acc__item.is-open .acc__term{color:inherit;opacity:.8}
+.prices__cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gap);align-items:start}
 .acc--prices .acc__head{grid-template-columns:1fr auto auto;column-gap:20px}
 .acc__cols{display:flex;justify-content:space-between;padding:0 56px 8px 16px;font-family:var(--mono);font-size:11.5px;line-height:16px;color:var(--ink-3)}
 .acc__icon{position:relative;flex:none;width:20px;height:20px}
@@ -283,12 +296,16 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
   .dir__media,.dir--1 .dir__media{grid-column:1;grid-row:1/4;aspect-ratio:3/2;align-self:start}
   .dir__head,.dir__list,.dir__more{grid-column:2}
   .dir__head{margin-top:0}
-  .prices__table,#ceny .prices__table,.prices__aside{grid-column:1/-1}
-  .prices__aside{margin-top:24px;padding-top:0}
+  .prices__table,#ceny .prices__table{grid-column:1/-1}
+  .sect__head--split{display:block}
+  .sect__note{margin-top:24px}
+  .prices__cols{grid-template-columns:1fr;row-gap:8px}
+  .prices__col:nth-child(2) .acc__cols{display:none}
   .steps,#ceny .steps{grid-template-columns:1fr;gap:16px}
   .faq__side,.faq__list{grid-column:1/-1}
   .faq__side{margin-bottom:24px}
   .contacts__info,.channels,.contact-guide{grid-column:1/-1}
+  .contacts__map{height:240px;margin-top:32px}
   .channels,.contact-guide{margin-top:32px}
   .foot__col:nth-child(1){grid-column:1/-1}
   .foot__col:nth-child(2){grid-column:1/span 6}
