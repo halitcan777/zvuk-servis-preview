@@ -152,7 +152,14 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .faq__list details p{font-size:15px;padding-bottom:24px}
 
 /* ─────────── 05 · контакты: данные слева, каналы связи справа ─────────── */
-#kontakty{padding-block:var(--sect) 40px;background:var(--night);--night:#111827;--night-line:#2b3344}
+/* Контакты светлые, подвал тёмный: контраст держит не блок контактов, а подвал.
+   Плитки, линии и подписи внутри секции написаны на ночных переменных,
+   поэтому светлая тема задаётся ПЕРЕОПРЕДЕЛЕНИЕМ этих переменных, а не переписыванием правил. */
+#kontakty{padding-block:var(--sect);background:var(--paper);color:var(--ink);
+          --night:var(--paper);--night-2:var(--white);--night-3:#dcd9d2;--night-line:var(--line);
+          --n-ink:var(--ink);--n-ink-2:var(--ink-2);--n-ink-3:var(--ink-3)}
+#kontakty .btn--quiet{background:var(--night-2);border:1px solid var(--night-line)}
+#kontakty .btn--quiet:hover{background:var(--night-3)}
 .contacts{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:0;align-items:start}
 .contacts__info{grid-column:1/span 6}
 .contacts__info .sect__index{margin-bottom:12px}
@@ -186,12 +193,11 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .contact-guide h3{font-size:18px}
 .contact-guide p{font-size:15px}
 
-/* ─────────── подвал: светлый, три колонки ─────────── */
-/* Подвал: более тёмная ступень после контактов, единая сетка и тонкий разделитель. */
-.foot{padding:40px 0 28px;background:#222c40;color:var(--n-ink-2);
-      border-top:1px solid #2f3a52;
-      --night:#222c40;--night-line:#3a4660;
-      --n-ink:#e7e5e0;--n-ink-2:#c2c7d2;--n-ink-3:#9aa1b1}  /* 4.5+ к #111827 */
+/* ─────────── подвал: тёмная плита под светлыми контактами ─────────── */
+.foot{padding:56px 0 28px;background:#111827;color:var(--n-ink-2);
+      border-top:0;
+      --night:#111827;--night-line:#2b3344;
+      --n-ink:#e7e5e0;--n-ink-2:#aeb4c0;--n-ink-3:#8a90a0}
 /* знак отдельной строкой над колонками — подвал получает собственную «шапку»
    и перестаёт выглядеть довеском к блоку контактов */
 .foot__brand{display:flex;align-items:center;gap:12px;margin-bottom:32px}

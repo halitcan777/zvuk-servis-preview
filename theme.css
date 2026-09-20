@@ -24,11 +24,13 @@ html{background:var(--bg)}
 html #kak-rabotaem{background:var(--white)}
 html #voprosy{background:var(--paper)}
 
-/* тёмная концовка — чёрная, без синевы; подвал ступенькой светлее контактов */
-html #kontakty{background:#0b0c0e;--night:#0b0c0e;--night-line:#2a2b2f}
-html .foot{background:#24252a;border-top-color:#3a3b40;
-           --night:#24252a;--night-line:#3a3b40;
-           --n-ink:#ffffff;--n-ink-2:#c3c3c5;--n-ink-3:#9a9b9e}
+/* Концовка: контакты — серый блок чередования, подвал — чёрная плита без синевы */
+html #kontakty{background:var(--white);color:var(--ink);
+               --night:var(--white);--night-2:var(--paper);--night-3:#f1f0ef;--night-line:#bcbab8;
+               --n-ink:var(--ink);--n-ink-2:var(--ink-2);--n-ink-3:var(--ink-3)}
+html .foot{background:#101114;border-top:0;
+           --night:#101114;--night-line:#2a2b2f;
+           --n-ink:#ffffff;--n-ink-2:#b4b4b6;--n-ink-3:#8e9093}
 
 /* на сером блоке линии должны читаться — тон темнее самого блока */
 html #chto-chinim{--line:#bcbab8}

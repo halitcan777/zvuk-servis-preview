@@ -251,7 +251,7 @@ button{font:inherit;color:inherit}
 .contacts__info h2{font-size:var(--fs-h2);letter-spacing:-.035em}
 .contacts__sub{margin-top:12px;font-size:var(--fs-lead);color:var(--n-ink-2)}
 .contacts__tel{display:inline-block;margin-top:28px;font-size:clamp(28px,1rem + 2.2vw,44px);font-weight:600;
-               letter-spacing:-.035em;color:#fff;transition:color .18s ease}
+               letter-spacing:-.035em;color:var(--n-ink);transition:color .18s ease}
 .contacts__tel:hover{color:var(--n-ink-2)}
 .contacts__list{margin-top:24px;border-top:1px solid var(--night-line)}
 .contacts__list > div{display:grid;grid-template-columns:132px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--night-line)}
