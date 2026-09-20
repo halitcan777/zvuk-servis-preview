@@ -1,0 +1,30 @@
+/* Photographic heroes. Keep the complete 3:2 editorial frame at every width. */
+.hero__media.hero-photo{position:relative;aspect-ratio:3/2;height:auto;min-height:0;width:100%;overflow:hidden;border-radius:12px;background:#e7e3db;align-self:center}
+.hero-photo picture{display:block;width:100%;height:100%}
+.hero__media.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
+@media(min-width:961px){
+ .hero__grid{grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:1fr 1fr;row-gap:22px;padding-block:40px}
+ .hero__text,.hero__aside{grid-column:1/span 5}.hero__text{align-self:end}.hero__aside{align-self:start}
+ .hero__media.hero-photo{grid-column:6/-1;grid-row:1/3}
+ .hero h1{font-size:clamp(42px,4.3vw,62px);max-width:none;line-height:1.06;letter-spacing:-.045em}
+ .hero .eyebrow{font-size:11px;line-height:1.6;max-width:36ch;margin-bottom:20px}
+}
+@media(min-width:961px) and (max-width:1200px){.hero h1{font-size:44px}}
+@media(max-width:960px){.hero__grid{row-gap:22px}.hero__text,.hero__aside{width:100%}.hero__media.hero-photo{grid-column:1;grid-row:auto}}
+@media(max-width:640px){.hero__media.hero-photo{border-radius:9px}.hero__grid{padding-block:28px 30px;row-gap:20px}.hero .eyebrow{font-size:10.5px;margin-bottom:16px}.hero__lead{line-height:1.55}.hero__facts{padding-bottom:30px}}
+
+/* Repair process: decorative editorial image, readable opaque step panels. */
+#kak-rabotaem.process-visual{position:relative;isolation:isolate;background:#17212a;color:#fff;overflow:hidden}
+.process-visual__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 44%;z-index:-2}
+#kak-rabotaem.process-visual::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,17,23,.87),rgba(10,17,23,.35));z-index:-1}
+#kak-rabotaem.process-visual .sect__index,#kak-rabotaem.process-visual .sect__index span{color:#e5e7e9}
+#kak-rabotaem.process-visual h2,#kak-rabotaem.process-visual h3{color:#fff}
+#kak-rabotaem.process-visual .sect__head{margin-bottom:36px}
+#kak-rabotaem.process-visual .steps{gap:16px}
+#kak-rabotaem.process-visual .step{padding:24px;border:1px solid #ffffff30;border-radius:10px;background:rgba(13,21,28,.92)}
+#kak-rabotaem.process-visual .step__n{color:#c5d7e3}
+#kak-rabotaem.process-visual .step h3{margin-top:18px}
+#kak-rabotaem.process-visual .step p{color:#e0e5e8;max-width:38ch}
+[data-theme=sound] #kak-rabotaem.process-visual .step{background:rgba(27,22,18,.93)}
+[data-theme=sound] #kak-rabotaem.process-visual .step__n{color:#e9c5a6}
+@media(max-width:640px){#kak-rabotaem.process-visual .step{padding:18px 20px}#kak-rabotaem.process-visual .step h3{margin-top:10px}#kak-rabotaem.process-visual .sect__head{margin-bottom:24px}.process-visual__image{object-position:70% center}}
