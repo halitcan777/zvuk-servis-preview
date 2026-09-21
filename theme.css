@@ -10,7 +10,7 @@
 :root{
   --bg:#c4c3c1;
   --paper:#ffffff;   /* светлый блок */
-  --white:#d3d1cf;   /* серый блок чередования, прямо из палитры */
+  --white:#eae9e7;   /* серый блок чередования: 21.09 осветлён по просьбе владельца, был #d3d1cf из палитры */
   --ink:#101114; --ink-2:#3e4044; --ink-3:#4c4e53;
   --line:#c6c4c2; --line-2:#93918f;
   --media:#e2e1df;
@@ -26,14 +26,14 @@ html #voprosy{background:var(--paper)}
 
 /* Концовка: контакты — серый блок чередования, подвал — чёрная плита без синевы */
 html #kontakty{background:var(--white);color:var(--ink);
-               --night:var(--white);--night-2:var(--paper);--night-3:#f1f0ef;--night-line:#bcbab8;
+               --night:var(--white);--night-2:var(--paper);--night-3:#f1f0ef;--night-line:#d6d4d1;
                --n-ink:var(--ink);--n-ink-2:var(--ink-2);--n-ink-3:var(--ink-3)}
 html .foot{background:#101114;border-top:0;
            --night:#101114;--night-line:#2a2b2f;
            --n-ink:#ffffff;--n-ink-2:#b4b4b6;--n-ink-3:#8e9093}
 
 /* на сером блоке линии должны читаться — тон темнее самого блока */
-html #chto-chinim{--line:#bcbab8}
-html #chto-chinim .acc__item{border-color:#bcbab8}
+html #chto-chinim{--line:#d6d4d1}
+html #chto-chinim .acc__item{border-color:#d6d4d1}
 
 @media(max-width:760px){html .callbar{background:rgba(255,255,255,.96)}}
