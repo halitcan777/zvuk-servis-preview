@@ -159,3 +159,39 @@
     [].forEach.call(reveal, function (el) { el.classList.add('is-in'); });
   }
 })();
+
+/* Ровные ряды плашек в соседних колонках («Что ремонтируем», «Цены»): закрытой плашке —
+   высота самой высокой в её ряду. На средних ширинах длинные названия переносятся в одной
+   колонке и не переносятся в соседней, и ряды съезжали. Колонки остаются независимыми:
+   раскрытая история удлиняет только свою колонку. */
+(function () {
+  var sets = [];
+  [['.dirs', '.dir .acc'], ['.prices__cols', '.prices__col .acc']].forEach(function (g) {
+    [].forEach.call(document.querySelectorAll(g[0]), function (box) {
+      var accs = [].slice.call(box.querySelectorAll(g[1]));
+      if (accs.length < 2) return;
+      sets.push({ accs: accs, cols: accs.map(function (a) {
+        return [].slice.call(a.children).map(function (it) { return it.querySelector('.acc__head'); });
+      }) });
+    });
+  });
+  if (!sets.length) return;
+  function align() {
+    sets.forEach(function (set) {
+      set.cols.forEach(function (col) { col.forEach(function (h) { if (h) h.style.minHeight = ''; }); });
+      // колонки стоят друг под другом (телефон) — выравнивать нечего
+      if (set.accs[0].getBoundingClientRect().left === set.accs[1].getBoundingClientRect().left) return;
+      var n = Math.max.apply(null, set.cols.map(function (c) { return c.length; }));
+      for (var i = 0; i < n; i++) {
+        var row = set.cols.map(function (c) { return c[i]; }).filter(Boolean);
+        var m = Math.max.apply(null, row.map(function (h) { return h.getBoundingClientRect().height; }));
+        row.forEach(function (h) { h.style.minHeight = m + 'px'; });
+      }
+    });
+  }
+  var raf = 0;
+  function schedule() { cancelAnimationFrame(raf); raf = requestAnimationFrame(align); }
+  align();
+  window.addEventListener('resize', schedule);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+})();
