@@ -57,10 +57,9 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
    Селектор с тегом — иначе базовое `.hero__media img{object-fit:cover}` выигрывает
    по специфичности и обрезает схему по краям. */
 .hero__media:has(.hero__axo){background:transparent;border-radius:0;overflow:visible;aspect-ratio:auto;align-self:center}
-.hero__media img.hero__axo{width:100%;height:auto;max-height:520px;object-fit:contain;
-                           background:none}  /* серая подложка сидит на самом img в site.css */
-@media (max-width:960px){.hero__media img.hero__axo{max-height:380px}}
-@media (max-width:640px){.hero__media img.hero__axo{max-height:300px}}
+  /* серая подложка сидит на самом img в site.css */
+
+
 .hero__media img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center}
 .hero .eyebrow{margin-bottom:20px;font-size:12px;letter-spacing:0;color:var(--ink-3)}
 .hero h1{font-size:clamp(40px,4.4vw,68px);line-height:1.04;letter-spacing:-.04em;color:var(--ink);max-width:14ch;text-wrap:balance}
@@ -71,7 +70,7 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .hero .btn--accent:hover{background:var(--accent-hover)}
 .hero .btn--quiet{background:transparent;border:1px solid var(--line-2);color:var(--ink)}
 .hero .btn--quiet:hover{background:var(--white)}
-.hero__scroll,.hero__caption{display:none}
+
 .hero__facts{padding:0 var(--pad) 48px}
 .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
 .facts>div{padding:20px 24px 0 0;border:0}
@@ -83,7 +82,7 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 /* ─────────── единый каркас секции ─────────── */
 .sect{padding-block:var(--sect);border-top:1px solid var(--line)}
 .sect--white{background:var(--white)}
-.sect--night{border-top:0}
+
 .sect__head{display:block;margin-bottom:32px;row-gap:0}
 .sect__index{display:flex;gap:8px;margin-bottom:12px;padding:0;font-size:12px}
 .sect__title{padding:0;border:0}
@@ -101,33 +100,33 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .dir__head{min-height:0;margin:16px 0 8px;align-items:baseline;gap:8px}
 .dir__n{padding:0}
 .dir h3{font-size:21px;line-height:1.2}
-.dir__list{margin:0}
-.dir__list li{min-height:0;padding-block:10px}
-.dir__list b{font-size:15px}
-.dir__list span{font-family:var(--sans);font-size:13px;line-height:1.5}
-.dir__more{border-bottom:1px solid var(--line)}
-.dir__more summary{cursor:pointer;padding:12px 0;font-size:14px;list-style:none;display:flex;justify-content:space-between}
-.dir__more summary::-webkit-details-marker{display:none}
-.dir__more summary::after{content:"+";color:var(--ink-3)}
-.dir__more[open] summary::after{content:"−"}
-.dirs__note{grid-column:1/-1;margin-top:-8px}
+
+
+
+
+
+
+
+
+
+
 
 /* ─────────── 02 · цены и сроки: таблица слева, пояснение справа ─────────── */
 #ceny{background:var(--paper);color:var(--ink)}
 .prices{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:0;align-items:start}
-.prices__stats{display:none}
+
 .prices__table,#ceny .prices__table{grid-column:1/-1;padding:0;border-radius:0;background:transparent}
-.ptable th{padding:0 0 10px}
-.ptable td,#ceny .ptable td{padding-block:13px;font-size:15px}
-.ptable__note{display:none}
+
+
+
 
 
 /* ─────────── 03 · как проходит ремонт: три шага на линейках ─────────── */
-.steps,#ceny .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0}
-.step,#ceny .step{padding:24px 0 0;border:0;border-top:1px solid var(--ink);border-radius:0;background:transparent}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0}
+.step{padding:24px 0 0;border:0;border-top:1px solid var(--ink);border-radius:0;background:transparent}
 .step__n{font-size:12px}
-.step h3,#ceny .step h3{min-height:0;margin-top:20px;font-size:20px;line-height:1.2}
-.step p,#ceny .step p{margin-top:8px;font-size:15px;line-height:1.5;max-width:34ch}
+.step h3{min-height:0;margin-top:20px;font-size:20px;line-height:1.2}
+.step p{margin-top:8px;font-size:15px;line-height:1.5;max-width:34ch}
 
 /* ─────────── 04 · вопросы ─────────── */
 #voprosy{background:var(--white)}
@@ -216,7 +215,7 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .acc{display:grid;gap:8px;border:0}
 .acc__item{border:0;border-radius:var(--r);background:rgba(17,24,39,.055);overflow:hidden;
            transition:background-color .2s ease,color .2s ease,transform .25s cubic-bezier(.4,0,.2,1)}
-.sect--night .acc__item,.acc--dark .acc__item{background:rgba(255,255,255,.07)}
+
 .acc__item:hover{background:rgba(17,24,39,.09);transform:translateX(4px)}
 .acc__item.is-open,.acc__item.is-open:hover{background:var(--ink);color:var(--paper);transform:none}
 .acc__head{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;width:100%;margin:0;padding:8px 16px;
@@ -294,17 +293,17 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
   .facts{grid-template-columns:1fr 1fr}
   .facts>div{padding-bottom:16px}
   .facts>div:nth-child(3){padding-left:0;border-left:0}
-  .facts>div:nth-child(n+3){border-top:1px solid var(--line);padding-top:16px}
+  .facts>div:nth-child(n/**/+3){border-top:1px solid var(--line);padding-top:16px}
   .dirs{grid-template-columns:minmax(0,1fr);row-gap:32px}
   .dir,.dir--1{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;grid-column:1}
   .dir__media,.dir--1 .dir__media{grid-column:1;grid-row:1/4;aspect-ratio:3/2;align-self:start}
-  .dir__head,.dir__list,.dir__more{grid-column:2}
+  .dir__head{grid-column:2}
   .dir__head{margin-top:0}
   .prices__table,#ceny .prices__table{grid-column:1/-1}
   .prices__foot{flex-direction:column;align-items:flex-start}
   .prices__cols{grid-template-columns:1fr;row-gap:8px}
   .prices__col:nth-child(2) .acc__cols{display:none}
-  .steps,#ceny .steps{grid-template-columns:1fr;gap:16px}
+  .steps{grid-template-columns:1fr;gap:16px}
   .faq__side,.faq__list{grid-column:1/-1}
   .faq__side{margin-bottom:24px}
   .contacts__info,.channels,.contact-guide{grid-column:1/-1}
@@ -330,8 +329,8 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
   .dir__head{margin-top:16px}
   .sect__head{margin-bottom:24px}
   .sect__title h2,.faq__side h2,.contacts__info h2{font-size:30px}
-  .ptable td,#ceny .ptable td{font-size:14px}
-  .ptable th:last-child,.ptable td:last-child{padding-left:12px;white-space:normal}
+  
+  
   .channels__grid{gap:8px}
   .channel{padding:12px 16px;column-gap:8px}
   .foot{padding-top:32px}
@@ -358,14 +357,14 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
  .dir__n{padding-top:4px}
 }
 @media(min-width:641px) and (max-width:960px){
- .steps,#ceny .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
- .step h3,#ceny .step h3{font-size:18px}
- .step p,#ceny .step p{font-size:14px}
- .prices__aside{display:flex;align-items:center;justify-content:space-between;gap:32px;padding-top:20px;border-top:1px solid var(--line)}
- .prices__aside p{max-width:48ch}.prices__aside .btn{flex:none;margin-top:0;font-size:13px;padding-inline:14px}
+ .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+ .step h3{font-size:18px}
+ .step p{font-size:14px}
+ 
+ 
 }
 @media(max-width:640px){
- .prices__aside p{max-width:48ch}
+ 
  .facts dt{font-size:clamp(18px,5.4vw,21px);overflow-wrap:normal}
  .foot__logo{height:28px}.foot__brand span{font-size:17px}
  .foot__col{min-width:0}.foot__col a{overflow-wrap:anywhere}
@@ -417,3 +416,15 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .guide .contact-guide{margin-top:0}
 .contact-guide li{align-items:baseline}
 @media (max-width:960px){ .guide{grid-column:1/-1;margin-top:32px} }
+
+/* Контакты на телефоне: плитки каналов 2×2 вместо столбика из четырёх (−120 px).
+   Плитка вертикальная — иконка сверху, текст на всю ширину, — иначе почта не влезала.
+   Уже 360 px текста не хватает и на вертикальную, там остаётся столбик. */
+@media (min-width:360px) and (max-width:480px){
+  .channels__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .channel{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;align-content:start;row-gap:4px;padding:14px}
+  .channel__i{grid-row:auto;width:20px;height:20px;margin:0 0 4px}
+  .channel b{font-size:15px}
+  .channel span{font-size:12.5px;overflow-wrap:normal}
+  .contacts__map{height:200px}
+}
