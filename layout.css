@@ -469,3 +469,20 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .rating svg{flex:none;color:#e0a100}
 .rating b{font-weight:600;color:var(--ink)}
 .rating--contacts{display:flex;width:fit-content;color:var(--n-ink-2)}.rating--contacts b{color:var(--n-ink)}
+
+/* ─────────── Правила Димы, проход 29.09 (design-qa) ───────────
+   Скелет блока: h2 → 24 → вводная → 40 (телефон 32) → контент.
+   Поля страницы по шкале, а не резиновые (было clamp → 57,6 px на 1440). */
+:root{--pad:56px}
+@media (max-width:1100px){:root{--pad:32px}}
+@media (max-width:640px){:root{--pad:20px}}
+.sect__lead,.contacts__sub{margin-top:24px}
+.sect__head{margin-bottom:40px}
+@media (max-width:760px){.sect__head{margin-bottom:32px}}
+/* иерархия в плашках: название работы не мельче текста внутри */
+.acc__title b{font-size:16px;font-weight:600}
+.acc__inner p{font-size:15px}
+/* подпись над группой карточек стала заголовком, не надстрочником */
+.channels__h{margin-bottom:16px;font-size:22px;letter-spacing:-.02em;font-weight:600;line-height:1.3;color:var(--n-ink)}
+@media (max-width:480px){.channel{padding:16px}}
+.contact-guide p,.acc__inner p,.faq__list p{text-wrap:pretty}
