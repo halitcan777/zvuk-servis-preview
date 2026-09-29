@@ -522,3 +522,24 @@ a,button,summary{-webkit-tap-highlight-color:rgba(17,24,39,.08);touch-action:man
 /* заглушки: подсвечены, пока мастер не прислал данные — grep 'class="ph"' */
 .ph{padding:0 2px;border-radius:2px;background:rgba(224,161,0,.24)}
 [data-theme=sound] .master{background:#fff}
+
+/* ─────────── Мобилка, проход 29.09 ─────────── */
+@media (max-width:640px){
+  /* факты строками: крупное значение слева, подпись справа — вместо тесных ячеек 2×2 по 150 px */
+  .facts{grid-template-columns:minmax(0,1fr)}
+  .facts>div,.facts>div+div{display:grid;grid-template-columns:136px minmax(0,1fr);column-gap:16px;align-items:baseline;
+    padding:16px 0;border-left:0;border-top:1px solid var(--line)}
+  .facts>div:first-child{border-top:0}
+  .hero__facts .facts>div:nth-child(n+2){border-top:1px solid var(--line)}
+  .facts dt{white-space:nowrap}
+  .facts dt{font-size:20px}
+  .facts dd{margin-top:0;max-width:none;font-size:14px}
+  .facts .status{grid-column:2}
+  /* цена в плашке — главное, ради чего её открывают: тёмная и плотнее */
+  .acc--prices .acc__term{font-size:14px;font-weight:600;color:var(--ink)}
+}
+/* карта: подложка со ссылкой, пока iframe грузится или если Яндекс недоступен */
+.contacts__map{position:relative}
+.map-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:var(--ink-2);font-size:15px;text-decoration:underline;text-underline-offset:4px}
+.contacts__map iframe{position:relative;z-index:1}
