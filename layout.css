@@ -508,3 +508,17 @@ a,button,summary{-webkit-tap-highlight-color:rgba(17,24,39,.08);touch-action:man
 /* на телефоне подпись колонок над ценами осиротела («Работа» без «Цены») */
 @media (max-width:640px){.acc__cols{display:none}}
 @media (max-width:760px){.facts__rating dd a{display:inline-flex;align-items:center;min-height:44px}}
+/* свёрнутые списки на телефоне и кнопка «Ещё» */
+.is-folded{display:none!important}
+.more-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:8px;padding:0 16px;
+  border:1px solid var(--line-2);border-radius:var(--r);background:transparent;color:var(--ink);font:600 15px/1.2 var(--sans);cursor:pointer;
+  transition:background-color .18s ease}
+.more-btn:hover{background:rgba(17,24,39,.05)}
+.more-btn[hidden]{display:none}
+/* карточка мастера в контактах */
+.master{margin-top:24px;padding:16px 20px;border-radius:8px;background:var(--white)}
+.master h3{font-size:18px;font-weight:600;line-height:1.3}
+.master p{margin-top:8px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+/* заглушки: подсвечены, пока мастер не прислал данные — grep 'class="ph"' */
+.ph{padding:0 2px;border-radius:2px;background:rgba(224,161,0,.24)}
+[data-theme=sound] .master{background:#fff}

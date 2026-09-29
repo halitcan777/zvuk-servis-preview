@@ -204,3 +204,37 @@
   window.addEventListener('resize', schedule);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
 })();
+
+/* На телефоне длинные списки свёрнуты: в группе направлений 3 плашки, в ценах первая колонка.
+   Остальное — кнопкой «Ещё N». Без JS видно всё. (29.09, impeccable critique: 25 плашек подряд) */
+(function () {
+  var mq = window.matchMedia('(max-width: 760px)');
+  function word(n) { var d = n % 10, h = n % 100; return (d === 1 && h !== 11) ? 'позиция' : (d >= 2 && d <= 4 && (h < 12 || h > 14)) ? 'позиции' : 'позиций'; }
+  function setup(box, hidden, label, count) {
+    if (!hidden.length) return;
+    var n = count || hidden.length;
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'more-btn'; btn.setAttribute('aria-expanded', 'false');
+    btn.textContent = label + ' ' + n + ' ' + word(n);
+    box.appendChild(btn);
+    function apply() {
+      var collapsed = mq.matches && btn.getAttribute('aria-expanded') === 'false';
+      hidden.forEach(function (el) { el.classList.toggle('is-folded', collapsed); });
+      btn.hidden = !mq.matches || !collapsed;
+    }
+    btn.addEventListener('click', function () { btn.setAttribute('aria-expanded', 'true'); apply(); });
+    (mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply));
+    apply();
+  }
+  [].forEach.call(document.querySelectorAll('.dirs .dir'), function (dir) {
+    var acc = dir.querySelector('.acc'); if (!acc) return;
+    setup(dir, [].slice.call(acc.children).slice(3), 'Ещё');
+  });
+  var cols = document.querySelector('.prices__cols');
+  if (cols) {
+    var all = [].slice.call(cols.querySelectorAll('.acc__item'));
+    var rest = [].slice.call(cols.querySelectorAll('.prices__col:nth-child(n+2)'));
+    var restItems = rest.reduce(function (k, c) { return k + c.querySelectorAll('.acc__item').length; }, 0);
+    if (all.length > 6) setup(cols, rest, 'Все цены: ещё', restItems);
+  }
+})();
