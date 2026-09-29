@@ -23,7 +23,7 @@
     else {
       for (var i = 1; i <= 7; i++) {
         var nd = (day + i) % 7;
-        if (hours[nd]) { text = 'Закрыто, откроемся ' + (i === 1 ? 'завтра' : days[nd]) + ' в ' + fmt(hours[nd][0]); break; }
+        if (hours[nd]) { text = 'Закрыто, откроемся ' + (i === 1 ? 'завтра' : days[nd]) + ' в\u00a0' + fmt(hours[nd][0]); break; }
       }
     }
     [].forEach.call(statuses, function (s) { s.textContent = text; s.classList.toggle('is-open', open); });
@@ -48,6 +48,15 @@
       if (e.key === 'Escape' && top.classList.contains('is-open')) { closeMenu(); burger.focus(); }
     });
     d.addEventListener('click', function (e) { if (top.classList.contains('is-open') && !top.contains(e.target)) closeMenu(); });
+  }
+
+  /* Липкая панель звонка на телефоне: прячем, пока видны кнопки первого экрана,
+     чтобы на экране не было двух одинаковых пар «Позвонить / WhatsApp». */
+  var heroCta = d.querySelector('.hero__cta');
+  if (heroCta && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      root.classList.toggle('cta-in-view', en[0].isIntersecting);
+    }).observe(heroCta);
   }
 
   /* полоса прокрутки */

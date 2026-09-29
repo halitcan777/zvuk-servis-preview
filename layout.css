@@ -428,3 +428,36 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
   .channel span{font-size:12.5px;overflow-wrap:normal}
   .contacts__map{height:200px}
 }
+
+/* ─────────── Дизайн-проход 29.09 (design-qa, impeccable, anti-ui-slop) ───────────
+   Надстрочники, номера секций и направлений сняты из разметки. Моноширинный шрифт
+   оставлен только там, где он несёт данные (часы работы в шапке FAQ); подписи — Golos. */
+.acc__cols,.channels__h,.foot__h,.contacts__list dt,.brand__tag,.status,.step__n,.faq__hours,.doc__req dt{
+  font-family:var(--sans);letter-spacing:0}
+.acc__cols,.channels__h,.contacts__list dt,.step__n,.doc__req dt{font-size:13px}
+.foot__h{font-size:13px;text-transform:none;letter-spacing:0}
+.faq__hours{font-size:14px}
+.status,.brand__tag{font-size:12px}
+.facts .status{font-size:12px}
+/* подсказки «Что рассказать мастеру» без номеров: одна колонка */
+.contact-guide li{grid-template-columns:1fr}
+/* висячие слова в коротких подписях */
+.facts dd,.step p,.contacts__sub,.hero__lead,.sect__lead{text-wrap:pretty}
+.sect__title h2,.hero h1,.step h3{text-wrap:balance}
+@media (max-width:960px){
+  /* меню на телефоне: пункты крупнее кнопок вокруг, не мельче (было 13 px от правила ≤1100) */
+  .top__nav>a{padding:12px 0;min-height:44px;display:flex;align-items:center;font-size:17px}
+  /* под открытым меню вторая пара «Позвонить / WhatsApp» не нужна */
+  body:has(.top.is-open) .callbar{visibility:hidden}
+}
+@media (max-width:760px){
+  /* липкая панель появляется, только когда кнопки первого экрана ушли из вида */
+  .callbar{transition:transform .24s cubic-bezier(.2,.8,.2,1),visibility .24s}
+  .cta-in-view .callbar{transform:translateY(110%);visibility:hidden}
+  /* тап-цели не меньше 44 px */
+  .foot__col a{display:flex;align-items:center;min-height:44px;padding-block:0}
+  .contacts__tel{display:inline-flex;align-items:center;min-height:44px}
+  /* отступы первого экрана на сетке 8 (было 30) */
+  .hero__facts{padding-bottom:32px}
+}
+@media (prefers-reduced-motion:reduce){.callbar{transition:none}}
