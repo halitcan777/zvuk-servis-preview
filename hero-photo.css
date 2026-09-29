@@ -25,5 +25,5 @@
 #kak-rabotaem.process-visual .step__n{color:#c5d7e3}
 #kak-rabotaem.process-visual .step h3{margin-top:16px}
 #kak-rabotaem.process-visual .step p{color:#e0e5e8;max-width:38ch}
-[data-theme=sound] #kak-rabotaem.process-visual .step__n{color:#e9c5a6}
+[data-theme=sound] #kak-rabotaem.process-visual .step__n{color:#c9cbcf}
 @media(max-width:640px){#kak-rabotaem.process-visual .steps{row-gap:0}#kak-rabotaem.process-visual .step{padding:24px 0}#kak-rabotaem.process-visual .step:last-child{padding-bottom:0}#kak-rabotaem.process-visual .step h3{margin-top:8px}#kak-rabotaem.process-visual .sect__head{margin-bottom:32px}.process-visual__image{object-position:70% center}}

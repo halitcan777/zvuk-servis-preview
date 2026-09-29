@@ -501,3 +501,10 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .foot :focus-visible,#kak-rabotaem :focus-visible,.callbar :focus-visible{outline-color:var(--n-ink,#fff)}
 .acc__term,.facts dt,.contacts__tel,.faq__tel{font-variant-numeric:tabular-nums}
 a,button,summary{-webkit-tap-highlight-color:rgba(17,24,39,.08);touch-action:manipulation}
+
+/* ─────────── impeccable critique, 29.09 ─────────── */
+/* резерв под двухстрочный заголовок направления пустовал (заголовки в одну строку): 26 px лишних */
+@media (min-width:961px){.dir__head{min-height:0}}
+/* на телефоне подпись колонок над ценами осиротела («Работа» без «Цены») */
+@media (max-width:640px){.acc__cols{display:none}}
+@media (max-width:760px){.facts__rating dd a{display:inline-flex;align-items:center;min-height:44px}}
