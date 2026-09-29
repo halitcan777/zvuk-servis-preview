@@ -13,18 +13,17 @@
 @media(max-width:960px){.hero__grid{row-gap:22px}.hero__text,.hero__aside{width:100%}.hero__media.hero-photo{grid-column:1;grid-row:auto}}
 @media(max-width:640px){.hero__media.hero-photo{border-radius:9px}.hero__grid{padding-block:28px 30px;row-gap:20px}.hero .eyebrow{font-size:10.5px;margin-bottom:16px}.hero__lead{line-height:1.55}.hero__facts{padding-bottom:30px}}
 
-/* Repair process: decorative editorial image, readable opaque step panels. */
+/* Repair process: decorative editorial image; шаги лентой без карточек (29.09, антислоп: три рамки в ряд). */
 #kak-rabotaem.process-visual{position:relative;isolation:isolate;background:#17212a;color:#fff;overflow:hidden}
 .process-visual__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 44%;z-index:-2}
-#kak-rabotaem.process-visual::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,17,23,.87),rgba(10,17,23,.35));z-index:-1}
+#kak-rabotaem.process-visual::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,17,23,.9),rgba(10,17,23,.72));z-index:-1}
 #kak-rabotaem.process-visual .sect__index,#kak-rabotaem.process-visual .sect__index span{color:#e5e7e9}
 #kak-rabotaem.process-visual h2,#kak-rabotaem.process-visual h3{color:#fff}
 #kak-rabotaem.process-visual .sect__head{margin-bottom:36px}
-#kak-rabotaem.process-visual .steps{gap:16px}
-#kak-rabotaem.process-visual .step{padding:24px;border:1px solid #ffffff30;border-radius:10px;background:rgba(13,21,28,.92)}
+#kak-rabotaem.process-visual .steps{gap:24px 48px}
+#kak-rabotaem.process-visual .step{padding:24px 0 0;border:0;border-top:1px solid rgba(255,255,255,.28);border-radius:0;background:none}
 #kak-rabotaem.process-visual .step__n{color:#c5d7e3}
-#kak-rabotaem.process-visual .step h3{margin-top:18px}
+#kak-rabotaem.process-visual .step h3{margin-top:16px}
 #kak-rabotaem.process-visual .step p{color:#e0e5e8;max-width:38ch}
-[data-theme=sound] #kak-rabotaem.process-visual .step{background:rgba(27,22,18,.93)}
 [data-theme=sound] #kak-rabotaem.process-visual .step__n{color:#e9c5a6}
-@media(max-width:640px){#kak-rabotaem.process-visual .step{padding:18px 20px}#kak-rabotaem.process-visual .step h3{margin-top:10px}#kak-rabotaem.process-visual .sect__head{margin-bottom:24px}.process-visual__image{object-position:70% center}}
+@media(max-width:640px){#kak-rabotaem.process-visual .steps{row-gap:0}#kak-rabotaem.process-visual .step{padding:24px 0}#kak-rabotaem.process-visual .step:last-child{padding-bottom:0}#kak-rabotaem.process-visual .step h3{margin-top:8px}#kak-rabotaem.process-visual .sect__head{margin-bottom:24px}.process-visual__image{object-position:70% center}}
