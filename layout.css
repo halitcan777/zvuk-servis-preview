@@ -486,3 +486,18 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
 .channels__h{margin-bottom:16px;font-size:22px;letter-spacing:-.02em;font-weight:600;line-height:1.3;color:var(--n-ink)}
 @media (max-width:480px){.channel{padding:16px}}
 .contact-guide p,.acc__inner p,.faq__list p{text-wrap:pretty}
+
+/* ─────────── taste-skill / impeccable, проход 29.09 ───────────
+   Первый экран — не больше 4 текстовых элементов: рейтинг переехал из-под кнопок в полосу фактов. */
+.facts__rating dt{display:flex;align-items:center;gap:8px}
+.facts__rating dt svg{width:.8em;height:.8em;flex:none;color:#e0a100}
+.facts__rating dd a{color:inherit;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;
+  transition:text-decoration-color .18s ease}
+.facts__rating dd a:hover{text-decoration-color:currentColor}
+/* ячейки фактов 2×2 на планшете и телефоне начинаются с одной высоты (было 20 и 16) */
+@media (max-width:960px){.facts>div,.facts>div+div{padding-top:16px}}
+/* браузерные поверхности из палитры: выделение, фокус на тёмном, цифры в ценах, тап */
+::selection{background:var(--ink);color:var(--paper)}
+.foot :focus-visible,#kak-rabotaem :focus-visible,.callbar :focus-visible{outline-color:var(--n-ink,#fff)}
+.acc__term,.facts dt,.contacts__tel,.faq__tel{font-variant-numeric:tabular-nums}
+a,button,summary{-webkit-tap-highlight-color:rgba(17,24,39,.08);touch-action:manipulation}
