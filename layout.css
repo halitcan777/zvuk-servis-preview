@@ -461,3 +461,11 @@ body{max-width:none;width:100%;margin:0;border:0;overflow-x:clip}
   .hero__facts{padding-bottom:32px}
 }
 @media (prefers-reduced-motion:reduce){.callbar{transition:none}}
+
+/* Рейтинг с Яндекс Карт (29.09): ссылка на карточку с отзывами, без плашки */
+.rating{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:8px;font-size:15px;color:var(--ink-2);
+  text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;transition:text-decoration-color .18s ease}
+.rating:hover{text-decoration-color:currentColor}
+.rating svg{flex:none;color:#e0a100}
+.rating b{font-weight:600;color:var(--ink)}
+.rating--contacts{display:flex;width:fit-content;color:var(--n-ink-2)}.rating--contacts b{color:var(--n-ink)}
