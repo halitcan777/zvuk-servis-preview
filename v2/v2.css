@@ -1,0 +1,99 @@
+/* Вариант v2 по референсу (29.09.2026): первый экран на фото, блок «о мастерской»,
+   направления карточками-фото, шаги в одной рамке, тёмная плашка перед контактами.
+   Работает только при <html class="v2">; откат — убрать класс и эту ссылку.
+   Без надстрочников, стрелок в кнопках, иконок в кружках и крупных номеров. Шкала 8. */
+
+/* ── кнопки на тёмном ── */
+.v2 .btn--light{background:#fff;color:var(--ink)}
+.v2 .btn--light:hover{background:var(--white)}
+.v2 .btn--ghost-light{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.48)}
+.v2 .btn--ghost-light:hover{background:rgba(255,255,255,.08)}
+
+/* ── первый экран ── */
+.v2 .hero{position:relative;isolation:isolate;overflow:hidden;padding:0;background:#0d141b;color:#fff;border:0}
+.v2 .hero__bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 44%}
+.v2 .hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(10,17,23,.92) 0%,rgba(10,17,23,.8) 42%,rgba(10,17,23,.24) 100%)}
+.v2 .hero__in{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  min-height:clamp(480px,72vh,720px);padding-block:96px}
+.v2 .hero h1{max-width:14ch;margin:0;color:#fff;font-size:clamp(40px,5vw,72px);line-height:1.04;letter-spacing:-.04em}
+.v2 .hero__lead{max-width:44ch;margin-top:24px;color:rgba(255,255,255,.84);font-size:clamp(17px,1.3vw,19px);line-height:1.5}
+.v2 .hero__cta{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+.v2 .hero .btn--accent{background:#fff;color:var(--ink)}
+.v2 .hero .btn--accent:hover{background:var(--white)}
+.v2 .hero .btn--quiet{background:transparent;color:#fff;border-color:transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.48)}
+.v2 .hero .btn--quiet:hover{background:rgba(255,255,255,.08)}
+.v2 .rating--hero{margin-top:16px;color:rgba(255,255,255,.8)}
+.v2 .rating--hero b{color:#fff}
+
+/* ── о мастерской: текст и карточки фактов слева, фото справа ── */
+.v2 .about__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:40px 48px;align-items:center}
+.v2 .about__text{grid-column:1/span 6}
+.v2 .about__media{grid-column:7/-1;margin:0;border-radius:12px;overflow:hidden;background:var(--media)}
+.v2 .about__media img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.v2 .about h2{max-width:18ch;font-size:clamp(30px,2.8vw,42px);line-height:1.12;letter-spacing:-.03em}
+.v2 .about__lead{max-width:52ch;margin-top:24px;color:var(--ink-2);font-size:17px;line-height:1.55}
+.v2 .about .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:40px;border:0}
+.v2 .about .facts>div,.v2 .about .facts>div+div{padding:16px 20px;border:0;border-radius:8px;background:var(--white)}
+.v2 .about .facts dt{font-size:22px;line-height:1.2;letter-spacing:-.02em}
+.v2 .about .facts dd{max-width:none;margin-top:8px;font-size:14px;line-height:1.45}
+
+/* ── направления: заголовок поверх фото ── */
+.v2 .dir{display:grid;grid-template-columns:minmax(0,1fr);align-content:start}
+.v2 .dir__media,.v2 .dir--1 .dir__media{position:relative;grid-column:1;grid-row:1;aspect-ratio:4/3;border-radius:12px}
+.v2 .dir__media::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,17,23,0) 45%,rgba(10,17,23,.82) 100%)}
+.v2 .dir__head{position:relative;z-index:1;grid-column:1;grid-row:1;align-self:end;min-height:0!important;margin:0;padding:24px;pointer-events:none}
+.v2 .dir h3{color:#fff;font-size:24px;line-height:1.2}
+.v2 .dir .acc{grid-column:1;grid-row:2;margin-top:16px}
+
+/* ── шаги: одна рамка, колонки через линию ── */
+.v2 .steps{gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.v2 .step{padding:24px;border:0;border-radius:0;background:transparent}
+.v2 .step+.step{border-left:1px solid var(--line)}
+.v2 .step h3{min-height:0;margin-top:16px}
+
+/* ── плашка перед контактами ── */
+.v2 .cta-band{padding-block:var(--sect)}
+.v2 .cta-band+.sect{border-top:0}
+/* у СР фон плашки и контактов общий: второй отступ не нужен; у ЗС контакты на серой полосе */
+.v2:not([data-theme=sound]) .cta-band+#kontakty{padding-top:0}
+.v2 .cta-band__in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr) auto;gap:24px 48px;align-items:center;
+  padding:40px 48px;border-radius:12px;background:var(--ink);color:#fff}
+.v2 .cta-band h2{color:#fff;font-size:clamp(26px,2.4vw,36px);line-height:1.15;letter-spacing:-.03em}
+.v2 .cta-band p{max-width:44ch;color:rgba(255,255,255,.78);font-size:16px;line-height:1.5}
+.v2 .cta-band__btns{display:flex;flex-wrap:wrap;gap:8px}
+
+@media (max-width:1100px){
+  .v2 .cta-band__in{grid-template-columns:minmax(0,1fr) auto}
+  .v2 .cta-band p{grid-column:1;grid-row:2}
+  .v2 .cta-band__btns{grid-column:2;grid-row:1/3}
+}
+@media (max-width:960px){
+  .v2 .about__grid{grid-template-columns:minmax(0,1fr)}
+  .v2 .about__text,.v2 .about__media{grid-column:1/-1}
+  .v2 .step{padding:24px}
+}
+@media (max-width:760px){
+  .v2 .hero::before{background:linear-gradient(180deg,rgba(10,17,23,.62) 0%,rgba(10,17,23,.9) 100%)}
+  .v2 .hero__bg{object-position:70% center}
+  .v2 .hero__in{min-height:0;padding-block:64px 48px}
+  .v2 .hero__cta{width:100%}
+  .v2 .hero .hero__cta .btn{flex:1 1 0}
+  .v2 .about__grid{gap:32px}
+  .v2 .about .facts{margin-top:32px;gap:8px}
+  .v2 .about .facts>div,.v2 .about .facts>div+div{padding:16px}
+  .v2 .about .facts dt{font-size:20px}
+  .v2 .about .facts dd{font-size:13.5px}
+  .v2 .dir__media,.v2 .dir--1 .dir__media{aspect-ratio:16/10}
+  .v2 .dir__head{padding:20px}
+  .v2 .steps{grid-template-columns:minmax(0,1fr)}
+  .v2 .step+.step{border-left:0;border-top:1px solid var(--line)}
+  .v2 .step{padding:24px 20px}
+  .v2 .cta-band__in{grid-template-columns:minmax(0,1fr);padding:32px 24px}
+  .v2 .cta-band p,.v2 .cta-band__btns{grid-column:1;grid-row:auto}
+  .v2 .cta-band__btns .btn{flex:1 1 0}
+}
+@media (max-width:420px){
+  .v2 .about .facts{grid-template-columns:minmax(0,1fr)}
+}
