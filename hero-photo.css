@@ -11,7 +11,7 @@
 }
 @media(min-width:961px) and (max-width:1200px){.hero h1{font-size:44px}}
 @media(max-width:960px){.hero__grid{row-gap:24px}.hero__text,.hero__aside{width:100%}.hero__media.hero-photo{grid-column:1;grid-row:auto}}
-@media(max-width:640px){.hero__media.hero-photo{border-radius:9px}.hero__grid{padding-block:32px;row-gap:24px}.hero .eyebrow{font-size:10.5px;margin-bottom:16px}.hero__lead{line-height:1.55}.hero__facts{padding-bottom:32px}}
+@media(max-width:640px){.hero__media.hero-photo{border-radius:9px}.hero__grid{padding-block:24px;row-gap:24px}.hero .eyebrow{font-size:10.5px;margin-bottom:16px}.hero__lead{line-height:1.55}.hero__facts{padding-bottom:32px}}
 
 /* Repair process: decorative editorial image; шаги лентой без карточек (29.09, антислоп: три рамки в ряд). */
 #kak-rabotaem.process-visual{position:relative;isolation:isolate;background:#17212a;color:#fff;overflow:hidden}
@@ -26,4 +26,4 @@
 #kak-rabotaem.process-visual .step h3{margin-top:16px}
 #kak-rabotaem.process-visual .step p{color:#e0e5e8;max-width:38ch}
 [data-theme=sound] #kak-rabotaem.process-visual .step__n{color:#c9cbcf}
-@media(max-width:640px){#kak-rabotaem.process-visual .steps{row-gap:0}#kak-rabotaem.process-visual .step{padding:24px 0}#kak-rabotaem.process-visual .step:last-child{padding-bottom:0}#kak-rabotaem.process-visual .step h3{margin-top:8px}#kak-rabotaem.process-visual .sect__head{margin-bottom:32px}.process-visual__image{object-position:70% center}}
+@media(max-width:640px){#kak-rabotaem.process-visual .steps{row-gap:0}#kak-rabotaem.process-visual .step{padding:16px 0}#kak-rabotaem.process-visual .step:last-child{padding-bottom:0}#kak-rabotaem.process-visual .step h3{margin-top:8px}#kak-rabotaem.process-visual .sect__head{margin-bottom:32px}.process-visual__image{object-position:70% center}}

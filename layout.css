@@ -583,3 +583,27 @@ a,button,summary{-webkit-tap-highlight-color:rgba(17,24,39,.08);touch-action:man
   .works__cap span{font-size:13px}
 }
 .works__cap b{line-height:26px}
+
+/* ─────────── Плотнее, 30.09 (юзер: «ультра много пространства в отступах») ───────────
+   Шкала та же (8), шаг вниз: секции 72→56 / 48→32, шапка блока 40→32 / 32→24. */
+:root{--sect:56px}
+.sect__head{margin-bottom:32px}
+.hero__facts{padding-bottom:40px}
+@media (max-width:760px){
+  :root{--sect:32px}
+  .sect__head{margin-bottom:24px}
+  .sect__lead,.contacts__sub{margin-top:16px}
+  .dirs{row-gap:24px}
+  .hero__grid{padding-block:24px}
+  .hero__facts{padding-bottom:24px}
+  .channels,.contact-guide{margin-top:24px}
+  .contacts__map{margin-top:24px}
+  .master{margin-top:16px}
+  .works__grid{row-gap:16px}
+  .prices__foot{margin-top:24px;padding-top:24px}
+}
+@media (max-width:640px){
+  .facts>div,.facts>div+div{padding-block:12px}
+  #kak-rabotaem.process-visual .step{padding:16px 0}
+  #kak-rabotaem.process-visual .sect__head{margin-bottom:24px}
+}
