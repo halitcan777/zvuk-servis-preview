@@ -544,23 +544,42 @@ a,button,summary{-webkit-tap-highlight-color:rgba(17,24,39,.08);touch-action:man
   color:var(--ink-2);font-size:15px;text-decoration:underline;text-underline-offset:4px}
 .contacts__map iframe{position:relative;z-index:1}
 
-/* ─────────── Лента «Что чинили недавно» (ЗС, 30.09): реальные аппараты клиентов ───────────
-   Горизонтальная лента — другой тип раскладки, чем три карточки направлений.
-   Край ленты совпадает с контейнером: отступ считается от ширины самой ленты, не от 100vw. */
+/* ─────────── Бенто «Что чинили недавно» (ЗС, 30.09): реальные аппараты клиентов ───────────
+   8 аппаратов = 8 ячеек, пустых нет. Две большие по диагонали, две широкие, четыре обычные:
+   раскладка не повторяет три карточки направлений. Подпись под фото, не поверх. */
 .works{background:var(--ink);color:#fff}
 .works h2{color:#fff}
 .works .sect__lead{color:rgba(255,255,255,.72)}
-.works__track{overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
-  --edge:max(var(--pad),calc((100% - var(--wrap)) / 2 + var(--pad)));
-  padding:0 var(--edge) 16px;scroll-padding-inline:var(--edge);
-  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.28) transparent}
-.works__track:focus-visible{outline:2px solid #fff;outline-offset:-2px}
-.works__list{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(280px,30vw,440px);gap:24px;margin:0;padding:0;list-style:none;width:max-content}
-.works__item{scroll-snap-align:start;min-width:0}
-.works__item img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px;background:#1d1f24}
-.works__cap{margin-top:16px}
+.works__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(232px,19.5vw,288px);
+  gap:24px 16px;margin:0;padding:0;list-style:none}
+.works__item{display:grid;grid-template-rows:minmax(0,1fr) auto;min-width:0;min-height:0}
+.works__item img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;border-radius:12px;background:#1d1f24}
+.works__item:nth-child(1){grid-column:1/3;grid-row:1/3}
+.works__item:nth-child(2){grid-column:3/4;grid-row:1/2}
+.works__item:nth-child(3){grid-column:4/5;grid-row:1/2}
+.works__item:nth-child(4){grid-column:3/5;grid-row:2/3}
+.works__item:nth-child(5){grid-column:1/3;grid-row:3/4}
+.works__item:nth-child(6){grid-column:3/5;grid-row:3/5}
+.works__item:nth-child(7){grid-column:1/2;grid-row:4/5}
+.works__item:nth-child(8){grid-column:2/3;grid-row:4/5}
+.works__cap{margin-top:12px}
 .works__cap b{display:block;font-size:17px;font-weight:600;line-height:1.3}
+.works__item--big .works__cap b{font-size:20px}
 .works__cap span{display:block;margin-top:4px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.64)}
-@media (max-width:640px){
-  .works__list{grid-auto-columns:78vw;gap:16px}
+/* подписи в одну строку, иначе фото в ряду разной высоты */
+@media (min-width:961px){.works__cap b,.works__cap span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+@media (max-width:960px){
+  /* две колонки: большие и широкие во всю ширину, обычные по две */
+  .works__grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto;gap:24px 16px}
+  .works__item,.works__item:nth-child(n){grid-column:auto;grid-row:auto}
+  .works__item{grid-template-rows:auto auto;align-content:start}
+  .works__item.works__item--big,.works__item.works__item--wide{grid-column:1/-1}
+  .works__item img{height:auto;aspect-ratio:4/3}
+  .works__item--big img{aspect-ratio:3/2}
+  .works__item--wide img{aspect-ratio:2/1}
 }
+@media (max-width:420px){
+  .works__cap b,.works__item--big .works__cap b{font-size:16px}
+  .works__cap span{font-size:13px}
+}
+.works__cap b{line-height:26px}
