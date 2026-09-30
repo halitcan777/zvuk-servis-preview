@@ -543,3 +543,24 @@ a,button,summary{-webkit-tap-highlight-color:rgba(17,24,39,.08);touch-action:man
 .map-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   color:var(--ink-2);font-size:15px;text-decoration:underline;text-underline-offset:4px}
 .contacts__map iframe{position:relative;z-index:1}
+
+/* ─────────── Лента «Что чинили недавно» (ЗС, 30.09): реальные аппараты клиентов ───────────
+   Горизонтальная лента — другой тип раскладки, чем три карточки направлений.
+   Край ленты совпадает с контейнером: отступ считается от ширины самой ленты, не от 100vw. */
+.works{background:var(--ink);color:#fff}
+.works h2{color:#fff}
+.works .sect__lead{color:rgba(255,255,255,.72)}
+.works__track{overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+  --edge:max(var(--pad),calc((100% - var(--wrap)) / 2 + var(--pad)));
+  padding:0 var(--edge) 16px;scroll-padding-inline:var(--edge);
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.28) transparent}
+.works__track:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+.works__list{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(280px,30vw,440px);gap:24px;margin:0;padding:0;list-style:none;width:max-content}
+.works__item{scroll-snap-align:start;min-width:0}
+.works__item img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px;background:#1d1f24}
+.works__cap{margin-top:16px}
+.works__cap b{display:block;font-size:17px;font-weight:600;line-height:1.3}
+.works__cap span{display:block;margin-top:4px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.64)}
+@media (max-width:640px){
+  .works__list{grid-auto-columns:78vw;gap:16px}
+}
