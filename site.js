@@ -238,3 +238,26 @@
     if (all.length > 6) setup(cols, rest, 'Все цены: ещё', restItems);
   }
 })();
+
+/* Карта: если Яндекс недоступен (сеть режет yandex.ru, блокировщик), подставляем OpenStreetMap
+   с той же точкой из data-fallback. Проверка — загрузка favicon Яндекса: у iframe событие load
+   приходит и при ошибке, по нему доступность не понять. */
+(function () {
+  [].forEach.call(document.querySelectorAll('iframe[data-fallback]'), function (f) {
+    var done = false;
+    function useFallback() {
+      if (done) return; done = true;
+      f.src = f.getAttribute('data-fallback'); f.removeAttribute('data-fallback');
+    }
+    function check() {
+      var probe = new Image(), timer = setTimeout(useFallback, 5000);
+      probe.onload = function () { clearTimeout(timer); done = true; };
+      probe.onerror = function () { clearTimeout(timer); useFallback(); };
+      probe.src = 'https://yandex.ru/favicon.ico?' + Date.now();
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { io.disconnect(); check(); } }, { rootMargin: '300px' });
+      io.observe(f);
+    } else check();
+  });
+})();
