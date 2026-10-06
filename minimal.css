@@ -1,0 +1,385 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Минимализм по мотивам dubaiaudio.com (06.10.2026).
+   Один файл вместо site.css + theme.css + layout.css + hero-photo.css.
+   Разметка и тексты прежние. Откат: вернуть в <head> четыре старых <link>.
+   Приёмы референса: белый и светло-серый фон, первый экран — фото во всю ширину
+   с тёмной вуалью и шапкой поверх, заглавные заголовки с разрядкой, кнопки
+   без скруглений (рамка или заливка), плитки фото с подписью внизу, чёрная полоса.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 700;font-display:swap;
+  src:url(fonts/GolosText-cyrillic.woff2) format("woff2");unicode-range:U+301,U+400-45F,U+490-491,U+4B0-4B1,U+2116}
+@font-face{font-family:"Golos Text";font-style:normal;font-weight:400 700;font-display:swap;
+  src:url(fonts/GolosText-latin.woff2) format("woff2");unicode-range:U+0-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:300 600;font-display:swap;
+  src:url(fonts/Montserrat-cyrillic.woff2) format("woff2");unicode-range:U+301,U+400-45F,U+490-491,U+4B0-4B1,U+2116}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:300 600;font-display:swap;
+  src:url(fonts/Montserrat-latin.woff2) format("woff2");unicode-range:U+0-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  --bg:#fff; --soft:#f6f6f4; --ink:#111; --ink-2:#4a4a4a; --ink-3:#8a8a8a;
+  --line:#e6e6e3; --line-2:#cfcfcb;
+  --black:#000; --b-ink:#fff; --b-ink-2:#b5b5b5; --b-line:#2a2a2a;
+  --ok:#2f9e68; --mark:#fff3b0;
+  --sans:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --disp:"Montserrat","Golos Text",system-ui,sans-serif;
+  --max:1360px; --pad:40px; --gap:24px; --sect:96px;
+  --top-h:112px;
+  --track:.16em;
+}
+
+/* ─────────── основа ─────────── */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--top-h) + 16px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.2;text-wrap:balance}
+p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+::selection{background:var(--ink);color:#fff}
+.skip{position:absolute;left:16px;top:-48px;z-index:60;padding:8px 16px;background:var(--ink);color:#fff}
+.skip:focus{top:8px}
+.nobr{white-space:nowrap}
+.ph{background:var(--mark);padding:0 4px}
+
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+
+/* надписи с разрядкой — главный приём референса */
+.caps{font-family:var(--disp);text-transform:uppercase;letter-spacing:var(--track)}
+
+/* ─────────── кнопки: без скруглений, заглавные ─────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 24px;
+     border:1px solid var(--ink);border-radius:0;background:var(--ink);color:#fff;
+     font:500 12px/1 var(--disp);text-transform:uppercase;letter-spacing:.14em;white-space:nowrap;cursor:pointer;
+     transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.btn svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn:hover{background:#fff;color:var(--ink)}
+.btn--quiet{background:transparent;color:var(--ink)}
+.btn--quiet:hover{background:var(--ink);color:#fff}
+.btn--lg{height:48px;padding:0 32px}
+.btn--sm{height:40px;padding:0 16px}
+
+/* ─────────── шапка: логотип по центру, меню строкой под ним ─────────── */
+.top{position:sticky;top:0;z-index:30;background:#fff;color:var(--ink);border-bottom:1px solid var(--line);
+     transition:background-color .3s ease,color .3s ease,border-color .3s ease}
+.top__in{display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:64px 48px;align-items:center;column-gap:24px}
+.brand{grid-column:2;grid-row:1;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.brand__mark{width:32px;height:32px;object-fit:contain}
+.brand__name{font:400 24px/1 var(--disp);letter-spacing:-.01em}
+.brand__tag{font:500 10px/1 var(--disp);letter-spacing:.2em;color:var(--ink-3);padding-top:4px}
+.top__side{display:contents}
+.top__tel{grid-column:1;grid-row:1;justify-self:start;font:500 14px/1 var(--disp);letter-spacing:.04em;transition:opacity .2s ease}
+.top__tel:hover{opacity:.6}
+.top__side .btn--sm{grid-column:3;grid-row:1;justify-self:end}
+.top__burger{display:none}
+.top__nav{grid-column:1 / -1;grid-row:2;display:flex;justify-content:center;gap:40px;align-self:stretch}
+.top__nav > a{position:relative;display:flex;align-items:center;font:500 11px/1 var(--disp);text-transform:uppercase;letter-spacing:.16em;transition:opacity .2s ease}
+.top__nav > a:hover{opacity:.6}
+.top__nav > a[aria-current="location"]::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:1px;background:currentColor}
+.top__nav-extra{display:none}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-3)}
+.status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink-3)}
+.status.is-open::before{background:var(--ok)}
+
+/* поверх первого экрана шапка прозрачная и белая, после прокрутки — белая плашка.
+   :has, а не класс из JS — чтобы при загрузке не мигала белая плашка. */
+html.js:has(.hero) .top{position:fixed;left:0;right:0}
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open){background:transparent;color:#fff;border-color:rgba(255,255,255,.18)}
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .brand__tag{color:rgba(255,255,255,.7)}
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .brand__mark{filter:brightness(0) invert(1)}
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm{background:transparent;border-color:#fff;color:#fff}
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm:hover{background:#fff;color:var(--ink)}
+
+/* ─────────── первый экран: фото во всю ширину, текст по центру ─────────── */
+.hero{position:relative}
+.hero__grid{position:relative;max-width:none;min-height:min(100svh,880px);padding:calc(var(--top-h) + 64px) var(--pad) 96px;
+            display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;isolation:isolate}
+.hero__media{position:absolute;inset:0;z-index:-1;background:#1b1b1b}
+.hero__media img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.35) 40%,rgba(0,0,0,.6))}
+.hero h1{font:300 56px/1.15 var(--disp);text-transform:uppercase;letter-spacing:.12em}
+.hero__lead{max-width:56ch;margin:24px auto 0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.88)}
+.hero__cta{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:40px}
+.hero .btn{background:transparent;border-color:#fff;color:#fff}
+.hero .btn:hover{background:#fff;color:var(--ink)}
+.hero .btn--accent{background:#fff;color:var(--ink)}
+.hero .btn--accent:hover{background:transparent;color:#fff}
+
+/* факты — полоса под фото, как строка брендов у референса */
+.hero__facts{padding-block:0}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.facts > div{padding:32px 24px;text-align:center}
+.facts > div + div{border-left:1px solid var(--line)}
+.facts dt{display:flex;align-items:center;justify-content:center;gap:8px;font:400 22px/1.2 var(--disp);letter-spacing:.04em}
+.facts dt svg{width:16px;height:16px}
+.facts dd{max-width:30ch;margin:8px auto 0;font-size:13px;line-height:1.5;color:var(--ink-3)}
+.facts dd a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-2)}
+.facts dd .status{display:flex;justify-content:center;margin-top:4px}
+
+/* ─────────── секции ─────────── */
+.sect{padding-block:var(--sect);background:var(--bg)}
+.sect + .sect:not(.process-visual){border-top:1px solid var(--line)}
+#chto-chinim,#kontakty{background:var(--soft);border-top:0}
+#chto-chinim + .sect,#kontakty + .sect{border-top:0}
+.sect__head{display:block;margin-bottom:48px;text-align:center}
+.sect__title h2,.faq__side h2,.contacts__info h2{font:400 22px/1.35 var(--disp);text-transform:uppercase;letter-spacing:var(--track)}
+.sect__lead{max-width:56ch;margin:16px auto 0;color:var(--ink-3);font-size:16px}
+.sect__index{display:none}
+
+/* ─────────── что ремонтируем: белые карточки на сером ─────────── */
+.dirs{row-gap:24px;align-items:start}
+.dir{grid-column:span 4;background:#fff}
+.dir__media{aspect-ratio:4/3;overflow:hidden;background:#e9e9e6}
+.dir__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.dir:hover .dir__media img{transform:scale(1.03)}
+.dir__head{padding:32px 24px 16px;text-align:center}
+.dir h3{font:500 14px/1.4 var(--disp);text-transform:uppercase;letter-spacing:var(--track)}
+.dir .acc{padding:0 24px 24px}
+.dir .more-btn{margin:0 24px 24px;width:calc(100% - 48px)}
+
+/* аккордеоны: строки с тонкой линией, без заливки */
+.acc{border-top:1px solid var(--line)}
+.acc__item{border-bottom:1px solid var(--line)}
+.acc__head{display:flex;align-items:center;gap:16px;width:100%;min-height:56px;padding:12px 0;border:0;background:none;text-align:left;cursor:pointer}
+.acc__title{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.acc__title b{font-size:15px;font-weight:500;line-height:1.4}
+.acc__title span{font-size:13px;line-height:1.4;color:var(--ink-3)}
+.acc__term{flex:none;font-size:14px;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.acc__icon{position:relative;flex:none;width:12px;height:12px}
+.acc__icon::before,.acc__icon::after{content:"";position:absolute;left:0;top:50%;width:12px;height:1px;margin-top:-.5px;background:currentColor;transition:transform .25s ease}
+.acc__icon::after{transform:rotate(90deg)}
+.acc__item.is-open .acc__icon::after{transform:rotate(0)}
+.acc__head:hover .acc__title b{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line-2)}
+.acc__panel{display:grid;grid-template-rows:1fr;transition:grid-template-rows .3s ease}
+.js .acc__panel{grid-template-rows:0fr}
+.js .acc__item.is-open .acc__panel{grid-template-rows:1fr}
+.acc__inner{min-height:0;overflow:hidden}
+.acc__inner p{padding:0 28px 16px 0;font-size:14px;line-height:1.6;color:var(--ink-2)}
+.acc__cols{display:flex;justify-content:space-between;padding:0 28px 12px 0;font:500 10px/1 var(--disp);text-transform:uppercase;letter-spacing:.18em;color:var(--ink-3)}
+
+.is-folded{display:none!important}
+.more-btn{display:flex;align-items:center;justify-content:center;width:100%;height:44px;margin-top:16px;border:1px solid var(--ink);border-radius:0;background:transparent;
+          font:500 11px/1 var(--disp);text-transform:uppercase;letter-spacing:.14em;cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.more-btn:hover{background:var(--ink);color:#fff}
+.more-btn[hidden]{display:none}
+
+/* ─────────── что чинили недавно: плитки фото, подпись внизу ─────────── */
+.works__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:240px;gap:16px}
+.works__item{position:relative;overflow:hidden;background:#1b1b1b;color:#fff}
+.works__item--big{grid-column:span 2;grid-row:span 2}
+.works__item--wide{grid-column:span 2}
+.works__item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.works__item:hover img{transform:scale(1.03)}
+.works__item::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72));pointer-events:none}
+.works__cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:24px;text-align:center}
+.works__cap b{display:block;font:500 13px/1.4 var(--disp);text-transform:uppercase;letter-spacing:var(--track)}
+.works__cap span{display:block;margin-top:4px;font-size:13px;color:rgba(255,255,255,.8)}
+
+/* ─────────── цены ─────────── */
+.prices{display:block}
+.prices__table{max-width:1120px;margin-inline:auto}
+.prices__cols{display:grid;grid-template-columns:1fr 1fr;column-gap:64px;align-items:start}
+.acc--prices .acc__head{min-height:56px}
+.acc--prices .acc__title b{font-size:15px}
+.prices__foot{max-width:64ch;margin:48px auto 0;text-align:center}
+.prices__foot p{font-size:14px;color:var(--ink-3)}
+.prices__foot .btn{margin-top:24px;background:transparent;color:var(--ink)}
+.prices__foot .btn:hover{background:var(--ink);color:#fff}
+
+/* ─────────── как проходит ремонт: чёрная полоса ─────────── */
+.process-visual{position:relative;isolation:isolate;overflow:hidden;background:var(--black);color:var(--b-ink)}
+.process-visual__image{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;opacity:.28}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;text-align:center}
+.step__n{display:block;font:300 48px/1 var(--disp);letter-spacing:.04em}
+.step h3{margin-top:24px;font:500 13px/1.5 var(--disp);text-transform:uppercase;letter-spacing:var(--track)}
+.step p{max-width:34ch;margin:12px auto 0;font-size:15px;color:var(--b-ink-2)}
+
+/* ─────────── вопросы ─────────── */
+.faq{align-items:start;row-gap:40px}
+.faq__side{grid-column:1 / span 4;position:sticky;top:calc(var(--top-h) + 24px)}
+.faq__cta p{margin-top:16px;font-size:15px;color:var(--ink-2);max-width:32ch}
+.faq__tel{display:inline-block;margin-top:24px;font:300 28px/1.2 var(--disp);letter-spacing:.02em}
+.faq__cta .faq__hours{margin-top:8px;font-size:13px;color:var(--ink-3)}
+.faq__list{grid-column:6 / -1;border-top:1px solid var(--line)}
+.faq__list details{border-bottom:1px solid var(--line)}
+.faq__list summary{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:64px;padding:16px 0;cursor:pointer;list-style:none;font-size:16px;font-weight:500}
+.faq__list summary::-webkit-details-marker{display:none}
+.faq__list summary::after{content:"";flex:none;width:12px;height:12px;
+  background:linear-gradient(currentColor,currentColor) center/12px 1px no-repeat,linear-gradient(currentColor,currentColor) center/1px 12px no-repeat;transition:transform .25s ease}
+.faq__list details[open] summary::after{transform:rotate(45deg)}
+.faq__list details p{padding:0 40px 24px 0;font-size:15px;color:var(--ink-2);max-width:64ch}
+
+/* ─────────── контакты ─────────── */
+.contacts{row-gap:48px;align-items:start}
+.contacts__info{grid-column:1 / span 5}
+.contacts__sub{margin-top:16px;font-size:16px;color:var(--ink-2)}
+.contacts__tel{display:inline-block;margin-top:32px;font:300 40px/1.1 var(--disp);letter-spacing:.02em;transition:opacity .2s ease}
+.contacts__tel:hover{opacity:.6}
+.contacts__list{margin-top:32px;border-top:1px solid var(--line-2)}
+.contacts__list > div{display:grid;grid-template-columns:144px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.contacts__list dt{font:500 10px/1.8 var(--disp);text-transform:uppercase;letter-spacing:.16em;color:var(--ink-3)}
+.contacts__list dd{font-size:15px}
+.contacts .hero__cta{justify-content:flex-start;margin-top:32px}
+.rating{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;color:var(--ink-2)}
+.rating svg{flex:none}
+.rating:hover span{text-decoration:underline;text-underline-offset:3px}
+
+.channels,.guide{grid-column:7 / -1}
+.channels__h{margin-bottom:24px;font:500 13px/1.4 var(--disp);text-transform:uppercase;letter-spacing:var(--track)}
+.channels__grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.channel{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:16px;row-gap:4px;padding:20px 24px;background:#fff;transition:background-color .2s ease}
+.channel:hover{background:var(--soft)}
+.channel__i{grid-row:1 / 3;width:20px;height:20px;margin-top:2px;color:var(--ink-3)}
+.channel b{font-size:15px;font-weight:500}
+.channel span{font-size:13px;color:var(--ink-3);overflow-wrap:anywhere}
+.channel[hidden]{display:none}
+.channels__links{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:24px;font-size:14px}
+.channels__links a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line-2)}
+.channels__links a:hover{text-decoration-color:currentColor}
+.contacts__map{position:relative;margin-top:32px;height:320px;overflow:hidden;background:#e9e9e6}
+.contacts__map iframe{position:relative;z-index:1;display:block;width:100%;height:100%;border:0}
+.map-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:underline;text-underline-offset:4px}
+
+.contact-guide{border-top:1px solid var(--line-2)}
+.contact-guide li{padding:24px 0;border-bottom:1px solid var(--line)}
+.contact-guide h3{font:500 13px/1.5 var(--disp);text-transform:uppercase;letter-spacing:.12em}
+.contact-guide p{margin-top:8px;font-size:15px;color:var(--ink-2)}
+
+/* ─────────── подвал ─────────── */
+.foot{padding:80px 0 32px;background:var(--black);color:var(--b-ink-2)}
+.foot__brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:56px;color:#fff;font:400 22px/1 var(--disp)}
+.foot__logo{width:32px;height:32px;object-fit:contain}
+.foot__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;padding-bottom:40px;border-bottom:1px solid var(--b-line);text-align:center}
+.foot__h{margin-bottom:16px;font:500 11px/1 var(--disp);text-transform:uppercase;letter-spacing:.18em;color:#fff}
+.foot__col p{font-size:14px;line-height:1.6;max-width:36ch;margin-inline:auto}
+.foot__col p + p{margin-top:4px}
+.foot__col b{display:block;margin-bottom:8px;font-weight:500;color:#fff}
+.foot__col a{display:block;width:fit-content;margin-inline:auto;padding:4px 0;font-size:14px;transition:color .2s ease}
+.foot__col a:hover{color:#fff}
+.foot__row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 32px;padding-top:24px;font-size:12px;color:#777}
+
+/* ─────────── нижняя панель звонка (телефон) ─────────── */
+.callbar{display:none}
+
+/* ─────────── документы ─────────── */
+.doc{padding:64px 0 96px}
+.doc .wrap{max-width:880px}
+.doc__back{display:inline-block;font:500 11px/1 var(--disp);text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3)}
+.doc__back:hover{color:var(--ink)}
+.eyebrow{font:500 11px/1.5 var(--disp);text-transform:uppercase;letter-spacing:.16em;color:var(--ink-3)}
+.doc h1{margin:16px 0;font:400 32px/1.3 var(--disp);text-transform:uppercase;letter-spacing:.1em;overflow-wrap:anywhere}
+.doc__lead{max-width:62ch;font-size:17px;color:var(--ink-2)}
+.doc h2{margin:48px 0 16px;font:500 14px/1.5 var(--disp);text-transform:uppercase;letter-spacing:var(--track)}
+.doc p,.doc li{max-width:72ch;font-size:15px;line-height:1.7;color:var(--ink-2)}
+.doc p + p,.doc li + li{margin-top:8px}
+.doc ol{list-style:decimal;padding-left:24px}
+.doc ul{list-style:disc;padding-left:24px}
+.doc a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-2)}
+.doc__notice{margin:32px 0;padding:16px 24px;border:1px solid var(--line-2)}
+.doc .doc__notice p{font-size:14px}
+.doc__toc{display:flex;flex-wrap:wrap;gap:8px 24px;margin:32px 0;padding:16px 0;border-block:1px solid var(--line);font-size:14px}
+.doc__req{margin-top:16px;border-top:1px solid var(--line)}
+.doc__req > div{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.doc__req dt{font:500 10px/1.8 var(--disp);text-transform:uppercase;letter-spacing:.16em;color:var(--ink-3)}
+.doc__req dd{font-size:15px}
+
+/* ─────────── появление блоков ─────────── */
+.js [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.js [data-reveal].is-in,.still [data-reveal]{opacity:1;transform:none}
+
+/* ═════════════ адаптив ═════════════ */
+@media (max-width:1200px){
+  .top__nav{gap:24px}
+  .hero h1{font-size:48px}
+}
+@media (max-width:960px){
+  :root{--top-h:64px;--pad:24px;--sect:72px}
+  .top__in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .top__side{display:flex;align-items:center;gap:8px}
+  .top__tel,.top__side .btn--sm{display:none}
+  .brand__name{font-size:20px}
+  .top__burger{display:block;position:relative;width:44px;height:44px;margin-right:-10px;padding:0;border:0;background:transparent;cursor:pointer}
+  .top__burger i{position:absolute;left:12px;width:20px;height:1px;background:currentColor;transition:transform .25s ease,top .25s ease}
+  .top__burger i:first-child{top:18px}
+  .top__burger i:last-child{top:26px}
+  .top.is-open .top__burger i:first-child{top:22px;transform:rotate(45deg)}
+  .top.is-open .top__burger i:last-child{top:22px;transform:rotate(-45deg)}
+  .top__nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;
+            max-height:calc(100dvh - 64px);overflow-y:auto;padding:8px var(--pad) 24px;background:#fff;border-bottom:1px solid var(--line)}
+  .top.is-open .top__nav{display:flex}
+  .top__nav > a{min-height:56px;font-size:13px;border-bottom:1px solid var(--line)}
+  .top__nav > a[aria-current="location"]::after{display:none}
+  .top__nav-extra{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding-top:24px}
+  .top__nav-extra a{display:inline-flex;align-items:center;height:48px;padding:0 24px;border:1px solid var(--ink);font:500 12px/1 var(--disp);text-transform:uppercase;letter-spacing:.14em}
+  .top__nav-extra a:first-child{background:var(--ink);color:#fff}
+  .hero__grid{min-height:640px;padding:calc(var(--top-h) + 48px) var(--pad) 72px}
+  .hero h1{font-size:36px;letter-spacing:.1em}
+  .hero__lead{font-size:16px}
+  .facts{grid-template-columns:1fr 1fr}
+  .facts > div:nth-child(3){border-left:0}
+  .facts > div:nth-child(n+3){border-top:1px solid var(--line)}
+  .dir{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr;align-items:start}
+  .dir__media{grid-row:1 / 4;aspect-ratio:auto;height:100%;min-height:320px}
+  .dir__head{text-align:left;padding:24px 24px 16px}
+  .dir > :not(.dir__media){grid-column:2}
+  .works__grid{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .works__item--big,.works__item--wide{grid-column:1 / -1}
+  .works__item--big{grid-row:span 2}
+  .prices__cols{grid-template-columns:1fr;row-gap:0}
+  .prices__col + .prices__col .acc{border-top:0}
+  .prices__col + .prices__col .acc__cols{display:none}
+  .steps{grid-template-columns:1fr;gap:48px}
+  .faq__side,.faq__list,.contacts__info,.channels,.guide{grid-column:1 / -1}
+  .faq__side{position:static}
+  .foot__grid{grid-template-columns:1fr;gap:32px}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;
+           padding:8px 16px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);
+           transition:transform .3s ease}
+  .callbar .btn{height:48px}
+  .callbar .btn--accent:hover{background:var(--ink);color:#fff}
+  .cta-in-view .callbar,.top.is-open ~ .callbar{transform:translateY(110%)}
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+}
+@media (max-width:640px){
+  :root{--pad:16px;--sect:56px;--track:.12em}
+  .brand__mark{width:28px;height:28px}
+  .brand__name{font-size:18px}
+  .brand__tag{display:none}
+  .hero__grid{min-height:600px;padding-bottom:56px}
+  .hero h1{font-size:28px;letter-spacing:.08em}
+  .hero__cta{flex-direction:column;align-items:stretch;width:100%;max-width:360px;margin-inline:auto;gap:8px}
+  .facts{grid-template-columns:1fr}
+  .facts > div{display:grid;grid-template-columns:136px 1fr;gap:16px;align-items:baseline;padding:16px 0;text-align:left}
+  .facts > div + div{border-left:0;border-top:1px solid var(--line)}
+  .facts dt{flex-wrap:wrap;justify-content:flex-start;gap:4px 8px;font-size:18px}
+  .facts dd{margin:0}
+  .facts dd .status{justify-content:flex-start}
+  .sect__head{margin-bottom:32px}
+  .sect__title h2,.faq__side h2,.contacts__info h2{font-size:18px}
+  .dir{display:block}
+  .dir__media{aspect-ratio:3/2;min-height:0;height:auto}
+  .dir__head{text-align:center;padding:24px 16px 16px}
+  .dir .acc{padding:0 16px 16px}
+  .dir .more-btn{margin:0 16px 16px;width:calc(100% - 32px)}
+  .works__grid{grid-auto-rows:160px;gap:8px}
+  .works__cap{padding:16px 8px}
+  .works__cap span{display:none}
+  .contacts__tel{font-size:32px}
+  .contacts__list > div{grid-template-columns:1fr;gap:4px}
+  .channels__grid{grid-template-columns:1fr}
+  .contacts__map{height:280px}
+  .faq__list details p{padding-right:0}
+  .foot{padding-top:56px}
+  .foot__row{flex-direction:column}
+  .doc h1{font-size:24px}
+  .doc__req > div{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-reveal]{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{transition:none!important}
+}

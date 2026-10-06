@@ -1,3 +1,12 @@
+/* Минимализм 06.10: шапка поверх первого экрана прозрачная, после прокрутки — белая. */
+(function () {
+  var r = document.documentElement;
+  if (!document.querySelector('.hero')) return;
+  var on = function () { r.classList.toggle('is-scrolled', window.scrollY > 24); };
+  addEventListener('scroll', on, {passive: true});
+  on();
+})();
+
 (function () {
   var d = document, root = d.documentElement;
 
