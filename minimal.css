@@ -378,8 +378,75 @@ html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm:hover{backgroun
   .doc h1{font-size:24px}
   .doc__req > div{grid-template-columns:1fr;gap:4px}
 }
+
+/* Шапка и подвал по структурной логике gpodyssey.ru/muzey */
+:root{--top-h:92px;--footer-line:#ddd7cc;--accent:#1f5bd8}
+html[data-theme="sound"]{--accent:#b55b2a}
+html.js:has(.hero) .top,
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open){position:sticky;left:auto;right:auto;background:#fff;color:var(--ink);border-color:var(--line)}
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .brand__tag{color:var(--ink-3)}
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .brand__mark{filter:none}
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm{background:transparent;border-color:var(--line-2);color:var(--ink)}
+html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm:hover{background:var(--ink);color:#fff}
+.top{height:92px;border-top:2px solid var(--accent,#111);box-shadow:none}
+.top__in{height:90px;display:grid;grid-template-columns:minmax(230px,1fr) auto minmax(230px,1fr);grid-template-rows:1fr;gap:32px}
+.brand{grid-column:1;grid-row:1;justify-self:start;gap:12px}.brand__mark{width:42px;height:42px}.brand__name{font-size:22px;font-weight:500}.brand__tag{font-size:9px}
+.top__nav{grid-column:2;grid-row:1;align-self:stretch;gap:clamp(20px,2.25vw,38px)}
+.top__nav>a{font-size:11px;letter-spacing:.08em}.top__nav>a[aria-current="location"]::after{bottom:0;height:2px;background:var(--accent,#111)}
+.top__side{grid-column:3;grid-row:1;display:flex;justify-self:end;align-items:center;gap:14px}.top__tel{grid-column:auto;grid-row:auto;font-family:var(--sans);font-size:14px}.top__side .btn--sm{grid-column:auto;grid-row:auto;background:transparent;color:var(--ink);border-color:var(--line-2)}
+.hero__grid{padding-top:80px}
+
+.foot{padding:58px 0 26px;background:#fff;color:#776d62;border-top:1px solid var(--footer-line)}
+.foot__brand{justify-content:flex-start;margin-bottom:36px;color:var(--ink);font-size:23px;font-weight:500}.foot__logo{width:42px;height:42px}
+.foot__grid{grid-template-columns:1.3fr 1fr 1fr;gap:clamp(42px,7vw,110px);padding-bottom:42px;border-bottom:1px solid var(--footer-line);text-align:left}
+.foot__h{margin-bottom:16px;color:var(--ink);font-size:12px;letter-spacing:.1em}.foot__col p{margin-inline:0;font-size:15px;line-height:1.7}.foot__col a{margin-inline:0;padding:4px 0;font-size:15px}.foot__col a:hover{color:var(--ink)}
+.foot__row{padding-top:24px;color:#776d62;font-size:13px}
+
+@media(max-width:1100px) and (min-width:961px){
+  .top__in{grid-template-columns:auto 1fr auto;gap:22px}.brand__tag,.top__tel{display:none}.top__nav{gap:18px}.top__nav>a{font-size:10px}.brand__name{font-size:19px}
+}
+@media(max-width:960px){
+  :root{--top-h:76px}.top{height:76px}.top__in{height:74px;display:flex;padding-inline:var(--pad)}
+  .brand{gap:10px}.brand__mark{width:36px;height:36px}.brand__name{font-size:20px}
+  .top__side{display:flex;gap:8px}.top__side::before{content:"";width:42px;height:42px;border:1px solid var(--footer-line);background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='2' d='M6.6 10.8c1.8 3.5 3.2 4.9 6.7 6.7l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.7 3.8.7.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21.3 2.7 13.4 2.7 3.6c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.7 3.8.1.4 0 .8-.2 1.1z'/%3E%3C/svg%3E") center/19px no-repeat;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='2' d='M6.6 10.8c1.8 3.5 3.2 4.9 6.7 6.7l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.7 3.8.7.6 0 1 .4 1 1v3.5c0 .6-.4 1-1 1C10.6 21.3 2.7 13.4 2.7 3.6c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.7 3.8.1.4 0 .8-.2 1.1z'/%3E%3C/svg%3E") center/19px no-repeat}
+  .top__burger{width:42px;height:42px;margin:0;border:1px solid var(--footer-line)}.top__burger i{left:10px;width:20px}.top__nav{top:74px}
+  .hero__grid{padding-top:64px}
+  .foot{padding-top:42px}.foot__brand{margin-bottom:28px}.foot__grid{grid-template-columns:1fr;gap:30px;text-align:left}.foot__col p,.foot__col a{margin-inline:0}.foot__row{flex-direction:column}
+  .top__side::before{display:none}.top__side .btn--sm{display:flex;width:42px;height:42px;padding:0;font-size:0;border-color:var(--footer-line)}.top__side .btn--sm::before{content:"☎";font:18px/1 var(--sans)}
+}
+@media(max-width:640px){
+  .top__in{padding-inline:20px}.brand__mark{width:32px;height:32px}.brand__name{font-size:18px}
+  .hero__grid{padding-top:64px}
+  .foot__brand{font-size:20px}.foot__logo{width:36px;height:36px}.foot__col p,.foot__col a{font-size:14px}
+}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js [data-reveal]{opacity:1;transform:none;transition:none}
   *,*::before,*::after{transition:none!important}
+}
+
+/* 07.10.2026: предметные герои; шапка и подвал сохраняют исходную геометрию */
+.hero__grid{align-items:flex-start;text-align:left;padding-inline:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)))}
+.hero__text,.hero__aside{width:min(620px,47vw)}
+.hero h1{font-weight:500;line-height:1.04;letter-spacing:-.025em;text-transform:none;text-wrap:balance}
+.hero__lead{margin:24px 0 0;max-width:45ch;color:rgba(255,255,255,.9)}
+.hero__cta{justify-content:flex-start;margin-top:32px}
+.hero__media img{object-position:64% 52%}
+html[data-theme="sound"] .hero__media img{object-position:66% 52%}
+.hero__media::after{background:linear-gradient(90deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.56) 34%,rgba(0,0,0,.12) 67%,rgba(0,0,0,.2) 100%)}
+
+@media (max-width:960px){
+  .hero__grid{align-items:flex-start;text-align:left;padding-inline:var(--pad)}
+  .hero__text,.hero__aside{width:min(560px,88vw)}
+  .hero h1{font-size:clamp(36px,8vw,54px);line-height:1.05;letter-spacing:-.03em;text-transform:none}
+  .hero__lead{margin-left:0;margin-right:0}.hero__cta{justify-content:flex-start}
+  .hero__media img{object-position:66% center}
+  .hero__media::after{background:linear-gradient(90deg,rgba(0,0,0,.76),rgba(0,0,0,.48) 60%,rgba(0,0,0,.2))}
+}
+@media (max-width:640px){
+  .hero__grid{min-height:660px;justify-content:flex-end;padding-top:120px;padding-bottom:70px}
+  .hero__text,.hero__aside{width:100%}.hero h1{font-size:40px}
+  .hero__lead{font-size:15px;line-height:1.5;max-width:32ch}.hero__cta{max-width:none;margin-inline:0}
+  .hero__media img{object-position:68% center}
+  .hero__media::after{background:linear-gradient(0deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.56) 48%,rgba(0,0,0,.18) 80%)}
 }
