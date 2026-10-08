@@ -394,6 +394,7 @@ html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm:hover{backgroun
 .top__nav{grid-column:2;grid-row:1;align-self:stretch;gap:clamp(20px,2.25vw,38px)}
 .top__nav>a{font-size:11px;letter-spacing:.08em}.top__nav>a[aria-current="location"]::after{bottom:0;height:2px;background:var(--accent,#111)}
 .top__side{grid-column:3;grid-row:1;display:flex;justify-self:end;align-items:center;gap:14px}.top__tel{grid-column:auto;grid-row:auto;font-family:var(--sans);font-size:14px}.top__side .btn--sm{grid-column:auto;grid-row:auto;background:transparent;color:var(--ink);border-color:var(--line-2)}
+.top__side .btn--sm svg{display:none}
 .hero__grid{padding-top:80px}
 
 .foot{padding:58px 0 26px;background:#fff;color:#776d62;border-top:1px solid var(--footer-line)}
@@ -412,10 +413,11 @@ html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm:hover{backgroun
   .top__burger{width:42px;height:42px;margin:0;border:1px solid var(--footer-line)}.top__burger i{left:10px;width:20px}.top__nav{top:74px}
   .hero__grid{padding-top:64px}
   .foot{padding-top:42px}.foot__brand{margin-bottom:28px}.foot__grid{grid-template-columns:1fr;gap:30px;text-align:left}.foot__col p,.foot__col a{margin-inline:0}.foot__row{flex-direction:column}
-  .top__side::before{display:none}.top__side .btn--sm{display:flex;width:42px;height:42px;padding:0;font-size:0;border-color:var(--footer-line)}.top__side .btn--sm::before{content:"☎";font:18px/1 var(--sans)}
+  .top__side::before{display:none}.top__side .btn--sm{display:flex;width:42px;height:42px;padding:0;border-color:var(--footer-line)}.top__side .btn--sm span{display:none}.top__side .btn--sm svg{display:block;width:19px;height:19px;stroke-width:1.7}
+  .top.is-open .top__burger i:first-child,.top.is-open .top__burger i:last-child{top:20px}
 }
 @media(max-width:640px){
-  .top__in{padding-inline:20px}.brand__mark{width:32px;height:32px}.brand__name{font-size:18px}
+  .top__in{padding-inline:16px}.brand__mark{width:30px;height:30px}.brand__name{font-size:18px}.top__side{gap:7px}.top__side .btn--sm,.top__burger{width:42px;height:42px;flex:none}.top__burger i{left:10px;width:20px}.top__burger i:first-child{top:18px}.top__burger i:last-child{top:24px}
   .hero__grid{padding-top:64px}
   .foot__brand{font-size:20px}.foot__logo{width:36px;height:36px}.foot__col p,.foot__col a{font-size:14px}
 }
