@@ -419,6 +419,28 @@ html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm:hover{backgroun
   .hero__grid{padding-top:64px}
   .foot__brand{font-size:20px}.foot__logo{width:36px;height:36px}.foot__col p,.foot__col a{font-size:14px}
 }
+
+/* Мобильная композиция: меньше линеек, больше самостоятельных блоков */
+@media(max-width:640px){
+  :root{--mobile-card:#f1f1ee;--mobile-gap:10px}
+  .sect + .sect:not(.process-visual){border-top:0}
+  .sect__head{text-align:left}.sect__lead{margin-left:0;margin-right:0}
+  .facts{gap:var(--mobile-gap);padding:14px 16px 18px;border:0;background:#fff}
+  .facts>div,.facts>div+div,.facts>div:nth-child(n+3){display:block;padding:16px;background:var(--soft);border:0}
+  .facts dt{font-size:18px}.facts dd{margin-top:7px;max-width:none}
+  .dirs{row-gap:16px}.dir{overflow:hidden}.dir__head{text-align:left}
+  .dir .acc,.prices__col .acc{display:grid;gap:8px;border:0}
+  .acc__item{padding:0 12px;background:var(--mobile-card);border:0}
+  .acc__head{min-height:58px}.acc__inner p{padding-right:0}
+  .more-btn{border-color:var(--line-2)}
+  .prices__cols{display:grid;gap:8px}.prices__col+.prices__col .acc{border:0}.prices__foot{margin-top:32px;text-align:left}
+  .process-visual .sect__head{text-align:left}.steps{gap:10px;text-align:left}.step{padding:22px;background:rgba(255,255,255,.08)}.step__n{font-size:34px}.step h3{margin-top:16px}.step p{margin-left:0;margin-right:0}
+  .contacts__list{display:grid;gap:8px;margin-top:26px;border:0}.contacts__list>div{padding:15px;background:#fff;border:0}
+  .channels__grid{display:grid;gap:8px;background:transparent;border:0}.channel{padding:18px;background:#fff;border:0}
+  .contact-guide{display:grid;gap:8px;border:0}.contact-guide li{padding:18px;background:#fff;border:0}
+  .faq__list{display:grid;gap:8px;border:0}.faq__list details{padding-inline:14px;background:var(--soft);border:0}
+  .foot__grid{padding-bottom:32px;border-bottom:0}.foot__row{padding-top:20px;border-top:1px solid var(--footer-line)}
+}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js [data-reveal]{opacity:1;transform:none;transition:none}
