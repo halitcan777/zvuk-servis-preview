@@ -259,25 +259,23 @@
   }
 })();
 
-/* Карта: если Яндекс недоступен (сеть режет yandex.ru, блокировщик), подставляем OpenStreetMap
-   с той же точкой из data-fallback. Проверка — загрузка favicon Яндекса: у iframe событие load
-   приходит и при ошибке, по нему доступность не понять. */
+/* Карта начинает загружаться сразу. Пока iframe не готов, видна лёгкая локальная подложка.
+   Если Яндекс не отвечает, через 4,5 секунды подключаем OpenStreetMap с той же точкой. */
 (function () {
   [].forEach.call(document.querySelectorAll('iframe[data-fallback]'), function (f) {
-    var done = false;
+    var box = f.parentElement, switched = false, timer;
+    if (box) box.classList.add('is-map-loading');
+    function ready() {
+      if (!switched && timer) clearTimeout(timer);
+      if (box) { box.classList.remove('is-map-loading'); box.classList.add('is-map-ready'); }
+    }
     function useFallback() {
-      if (done) return; done = true;
-      f.src = f.getAttribute('data-fallback'); f.removeAttribute('data-fallback');
+      if (switched || !f.getAttribute('data-fallback')) return;
+      switched = true;
+      f.src = f.getAttribute('data-fallback');
+      f.removeAttribute('data-fallback');
     }
-    function check() {
-      var probe = new Image(), timer = setTimeout(useFallback, 5000);
-      probe.onload = function () { clearTimeout(timer); done = true; };
-      probe.onerror = function () { clearTimeout(timer); useFallback(); };
-      probe.src = 'https://yandex.ru/favicon.ico?' + Date.now();
-    }
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { io.disconnect(); check(); } }, { rootMargin: '300px' });
-      io.observe(f);
-    } else check();
+    f.addEventListener('load', ready);
+    timer = setTimeout(useFallback, 4500);
   });
 })();
