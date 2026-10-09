@@ -231,18 +231,20 @@ html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm:hover{backgroun
 .channels,.guide{grid-column:7 / -1}
 .channels__h{margin-bottom:24px;font:500 13px/1.4 var(--disp);text-transform:uppercase;letter-spacing:var(--track)}
 .channels__grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-.channel{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:16px;row-gap:4px;padding:20px 24px;background:#fff;transition:background-color .2s ease}
+.channel{position:relative;z-index:3;display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:16px;row-gap:4px;padding:20px 24px;background:#fff;pointer-events:auto;cursor:pointer;transition:background-color .2s ease}
+.channel>*{pointer-events:none}
 .channel:hover{background:var(--soft)}
 .channel__i{grid-row:1 / 3;width:20px;height:20px;margin-top:2px;color:var(--ink-3)}
 .channel b{font-size:15px;font-weight:500}
 .channel span{font-size:13px;color:var(--ink-3);overflow-wrap:anywhere}
 .channel[hidden]{display:none}
 .channels__links{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:24px;font-size:14px}
-.channels__links a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line-2)}
+.channels__links a{position:relative;z-index:3;pointer-events:auto;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line-2)}
 .channels__links a:hover{text-decoration-color:currentColor}
 .contacts__map{position:relative;margin-top:32px;height:320px;overflow:hidden;background:#e9e9e6}
 .contacts__map iframe{position:relative;z-index:1;display:block;width:100%;height:100%;border:0;opacity:1;transition:opacity .2s ease}
 .contacts__map.is-map-loading iframe{opacity:0}
+.contacts__map.is-map-loading iframe{pointer-events:none}
 .map-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:#e9e9e6;color:var(--ink-2);font-size:14px;text-align:center;text-decoration:underline;text-underline-offset:4px}
 
 .contact-guide{border-top:1px solid var(--line-2)}
