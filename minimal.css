@@ -242,10 +242,11 @@ html.js:has(.hero):not(.is-scrolled) .top:not(.is-open) .btn--sm:hover{backgroun
 .channels__links a{position:relative;z-index:3;pointer-events:auto;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line-2)}
 .channels__links a:hover{text-decoration-color:currentColor}
 .contacts__map{position:relative;margin-top:32px;height:320px;overflow:hidden;background:#e9e9e6}
-.contacts__map iframe{position:relative;z-index:1;display:block;width:100%;height:100%;border:0;opacity:1;transition:opacity .2s ease}
+.contacts__map iframe{position:relative;z-index:1;display:block;width:100%;height:100%;border:0;opacity:1;pointer-events:none;transition:opacity .2s ease}
 .contacts__map.is-map-loading iframe{opacity:0}
 .contacts__map.is-map-loading iframe{pointer-events:none}
-.map-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:#e9e9e6;color:var(--ink-2);font-size:14px;text-align:center;text-decoration:underline;text-underline-offset:4px}
+.map-fallback{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;justify-content:flex-start;padding:16px;background:transparent;color:var(--ink);font-size:0;text-decoration:none;cursor:pointer}
+.map-fallback::after{content:"Посмотреть на картах";display:inline-flex;align-items:center;min-height:44px;padding:0 16px;background:#fff;border:1px solid var(--line-2);font:500 12px/1 var(--disp);text-transform:uppercase;letter-spacing:.08em;box-shadow:0 4px 18px rgba(0,0,0,.12)}
 
 .contact-guide{border-top:1px solid var(--line-2)}
 .contact-guide li{padding:24px 0;border-bottom:1px solid var(--line)}
